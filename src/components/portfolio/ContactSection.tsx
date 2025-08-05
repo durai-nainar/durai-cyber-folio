@@ -145,7 +145,7 @@ export const ContactSection = () => {
                       className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
                     />
                   </div>
-                  <button type="submit" className="w-full btn-cyber flex items-center justify-center gap-2">
+                  <button type="submit" className="w-full btn-cyber rgb-bg flex items-center justify-center gap-2">
                     <Send size={20} />
                     Send Message
                   </button>
