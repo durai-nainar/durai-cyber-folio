@@ -48,7 +48,7 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="text-cyber-glow">Durai Rajan</span>
+              <span className="rgb-text">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
               I'm a <span className="text-primary font-semibold min-h-[1.5em] inline-block">{displayText}</span>
@@ -96,11 +96,11 @@ export const HeroSection = () => {
           {/* Right Content - Profile Image */}
           <div className="flex-1 flex justify-center" data-aos="fade-left">
             <div className="relative">
-              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden border-4 border-primary/40">
+              <div className="rgb-border w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                   alt="Durai Rajan"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               {/* Outer glow ring */}

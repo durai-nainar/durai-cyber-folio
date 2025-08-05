@@ -60,65 +60,16 @@ export const ContactSection = () => {
           <h2 className="text-4xl font-bold text-center mb-6 text-cyber-glow" data-aos="fade-up">
             Get In Touch
           </h2>
-          <div className="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div className="inline-block">
-              <h3 className="text-2xl font-bold text-cyber-glow border-b-2 border-primary pb-1">
-                Let's Connect
-              </h3>
-            </div>
-          </div>
           <p className="text-center text-lg mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="200">
             I am always ready and eager to talk — to share ideas, explore possibilities, and grow together.
           </p>
           
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div data-aos="fade-right">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
-                  />
-                </div>
-                <button type="submit" className="w-full btn-cyber flex items-center justify-center gap-2">
-                  <Send size={20} />
-                  Send Message
-                </button>
-              </form>
-            </div>
-            
             {/* Contact Info */}
             <div data-aos="fade-left">
-              <div className="card-cyber">
-                <h4 className="text-xl font-bold mb-6 text-cyber-glow">Connect With Me</h4>
+              <div className="card-cyber rgb-border">
+                <h4 className="text-xl font-bold mb-2 rgb-text">Connect With Me</h4>
+                <p className="text-muted-foreground mb-6">Feel Free to Contact Me</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="text-primary" size={20} />
@@ -153,6 +104,52 @@ export const ContactSection = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div data-aos="fade-right">
+              <div className="card-cyber rgb-border">
+                <h4 className="text-xl font-bold mb-6 rgb-text text-center">Send Message</h4>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
+                    />
+                  </div>
+                  <button type="submit" className="w-full btn-cyber flex items-center justify-center gap-2">
+                    <Send size={20} />
+                    Send Message
+                  </button>
+                </form>
               </div>
             </div>
           </div>

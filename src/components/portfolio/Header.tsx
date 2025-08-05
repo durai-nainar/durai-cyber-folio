@@ -60,7 +60,7 @@ export const Header = () => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold text-cyber-glow">
+          <div className="text-2xl font-bold rgb-text">
             Durai's Portfolio
           </div>
 

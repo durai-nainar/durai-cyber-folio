@@ -36,20 +36,20 @@ export const EducationSection = () => {
             
             {education.map((edu, index) => (
               <div key={index} className="relative mb-12" data-aos="fade-up" data-aos-delay={index * 200}>
-                <div className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-full md:w-7/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                    <div className="card-cyber">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                          <edu.icon className="text-primary-foreground" size={24} />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-cyber-glow">{edu.degree}</h3>
-                          <p className="text-muted-foreground">{edu.year}</p>
-                        </div>
+              <div className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  <div className="card-cyber rgb-border">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                        <edu.icon className="text-primary-foreground" size={24} />
                       </div>
-                      <p className="text-foreground">{edu.institution}</p>
+                      <div>
+                        <h3 className="text-xl font-bold rgb-text">{edu.degree}</h3>
+                        <p className="text-muted-foreground">{edu.year}</p>
+                      </div>
                     </div>
+                    <p className="text-foreground">{edu.institution}</p>
+                  </div>
                   </div>
                 </div>
                 

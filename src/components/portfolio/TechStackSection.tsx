@@ -43,22 +43,22 @@ export const TechStackSection = () => {
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
       <h3 className="text-2xl font-bold mb-6 text-center text-cyber-glow border-b-2 border-primary pb-2 inline-block">{title}</h3>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={index} 
-            className="card-cyber text-center p-4 group cursor-pointer"
+            className="bg-card/50 backdrop-blur-sm border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300"
             data-aos="zoom-in" 
             data-aos-delay={index * 100}
           >
-            <div className="w-16 h-16 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+            <div className="w-10 h-10 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
               <img 
                 src={tech.logo} 
                 alt={tech.name}
                 className="w-full h-full object-contain"
               />
             </div>
-            <p className="text-sm font-medium text-foreground">{tech.name}</p>
+            <p className="text-xs font-medium text-foreground">{tech.name}</p>
           </div>
         ))}
       </div>
@@ -84,11 +84,13 @@ export const TechStackSection = () => {
           </div>
           
           {/* Programming & Others */}
-          <div data-aos="fade-up">
-            <TechGrid title="Programming" technologies={techStack.programming} />
-          </div>
-          <div data-aos="fade-up">
-            <TechGrid title="Others" technologies={techStack.others} />
+          <div className="grid md:grid-cols-2 gap-12">
+            <div data-aos="fade-right">
+              <TechGrid title="Programming" technologies={techStack.programming} />
+            </div>
+            <div data-aos="fade-left">
+              <TechGrid title="Others" technologies={techStack.others} />
+            </div>
           </div>
         </div>
       </div>

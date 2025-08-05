@@ -38,21 +38,21 @@
   }
 
   .dark {
-    /* Dark theme - Dark sea blue cyberpunk */
+    /* Dark theme - Dark blue cyberpunk */
     --background: 210 40% 8%;
     --foreground: 200 100% 90%;
     
     --card: 210 30% 12%;
     --card-foreground: 200 100% 85%;
     
-    --primary: 190 100% 50%;
-    --primary-foreground: 210 40% 8%;
-    --primary-glow: 190 100% 60%;
+    --primary: 221 83% 25%;
+    --primary-foreground: 200 100% 90%;
+    --primary-glow: 221 83% 35%;
     
     --secondary: 210 25% 18%;
     --secondary-foreground: 200 100% 80%;
     
-    --accent: 180 100% 55%;
+    --accent: 236 85% 45%;
     --accent-foreground: 210 40% 8%;
     
     --muted: 210 20% 15%;
@@ -60,11 +60,11 @@
     
     --border: 210 25% 20%;
     --input: 210 25% 15%;
-    --ring: 190 100% 50%;
+    --ring: 221 83% 25%;
     
-    --cyber-gradient: linear-gradient(135deg, hsl(190 100% 40%), hsl(180 100% 50%));
-    --cyber-glow: 0 0 30px hsl(190 100% 50% / 0.4);
-    --cyber-text-glow: 0 0 15px hsl(190 100% 50% / 0.6);
+    --cyber-gradient: linear-gradient(135deg, hsl(221 83% 25%), hsl(236 85% 45%));
+    --cyber-glow: 0 0 30px hsl(221 83% 25% / 0.4);
+    --cyber-text-glow: 0 0 15px hsl(221 83% 25% / 0.6);
   }
   
   /* Custom cyberpunk animations */
@@ -266,6 +266,56 @@
     opacity: 0.85;
     transform: translateX(-3px) translateY(8px) scale(1.02);
   }
+}
+
+@keyframes rgb-border {
+  0% {
+    border-color: #ff0080;
+    box-shadow: 0 0 10px #ff0080;
+  }
+  16.66% {
+    border-color: #ff8000;
+    box-shadow: 0 0 10px #ff8000;
+  }
+  33.33% {
+    border-color: #ffff00;
+    box-shadow: 0 0 10px #ffff00;
+  }
+  50% {
+    border-color: #80ff00;
+    box-shadow: 0 0 10px #80ff00;
+  }
+  66.66% {
+    border-color: #00ff80;
+    box-shadow: 0 0 10px #00ff80;
+  }
+  83.33% {
+    border-color: #0080ff;
+    box-shadow: 0 0 10px #0080ff;
+  }
+  100% {
+    border-color: #ff0080;
+    box-shadow: 0 0 10px #ff0080;
+  }
+}
+
+@keyframes rgb-text {
+  0% { color: #ff0080; }
+  16.66% { color: #ff8000; }
+  33.33% { color: #ffff00; }
+  50% { color: #80ff00; }
+  66.66% { color: #00ff80; }
+  83.33% { color: #0080ff; }
+  100% { color: #ff0080; }
+}
+
+.rgb-border {
+  border: 2px solid #ff0080;
+  animation: rgb-border 3s linear infinite;
+}
+
+.rgb-text {
+  animation: rgb-text 3s linear infinite;
 }
 
 @layer base {
