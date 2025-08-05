@@ -318,6 +318,13 @@
   animation: rgb-text 3s linear infinite;
 }
 
+@keyframes color-shift {
+  0%, 100% { color: #ff0000; }
+  25% { color: #ffffff; }
+  50% { color: #ff0000; }
+  75% { color: #ffffff; }
+}
+
 @layer base {
   * {
     @apply border-border;

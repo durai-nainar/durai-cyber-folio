@@ -25,7 +25,7 @@ export const EducationSection = () => {
   return (
     <section id="education" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-cyber-glow" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Education Timeline
         </h2>
         
@@ -37,7 +37,7 @@ export const EducationSection = () => {
             {education.map((edu, index) => (
               <div key={index} className="relative mb-12" data-aos="fade-up" data-aos-delay={index * 200}>
               <div className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                <div className={`w-full md:w-4/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
                   <div className="card-cyber rgb-border">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
