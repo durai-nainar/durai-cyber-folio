@@ -43,7 +43,7 @@ export const TechStackSection = () => {
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
       <h3 className="text-2xl font-bold mb-6 text-center text-cyber-glow border-b-2 border-primary pb-2 inline-block">{title}</h3>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={index} 
@@ -68,7 +68,7 @@ export const TechStackSection = () => {
   return (
     <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-cyber-glow" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Tech Stack
         </h2>
         

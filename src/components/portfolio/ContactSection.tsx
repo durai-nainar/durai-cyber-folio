@@ -69,7 +69,7 @@ export const ContactSection = () => {
             <div data-aos="fade-left">
               <div className="card-cyber rgb-border">
                 <h4 className="text-xl font-bold mb-2 rgb-text">Connect With Me</h4>
-                <p className="text-muted-foreground mb-6">Feel Free to Contact Me</p>
+                <p className="text-muted-foreground mb-6">I'm always open to connecting with like-minded individuals, collaborators, or potential employers. Whether you have a project in mind, a question about my work, or simply want to say hello, don't hesitate to reach out. I genuinely enjoy discussing ideas, solving problems, and exploring new opportunities.</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="text-primary" size={20} />
@@ -93,13 +93,13 @@ export const ContactSection = () => {
                   <h5 className="text-lg font-semibold mb-4 text-cyber-glow">Follow Me</h5>
                   <div className="flex gap-4">
                     {socialLinks.map((social, index) => (
-                      <button
+                        <button
                         key={index}
                         onClick={() => window.open(social.url, '_blank')}
-                        className="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 group"
+                        className="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 group rgb-border"
                         title={social.label}
                       >
-                        <social.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
+                        <social.icon className="rgb-text group-hover:scale-110 transition-transform" size={20} />
                       </button>
                     ))}
                   </div>

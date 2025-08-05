@@ -17,7 +17,7 @@ export const TestimonialsSection = () => {
   return (
     <section id="testimonials" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-cyber-glow" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           What People Say
         </h2>
         
@@ -26,7 +26,7 @@ export const TestimonialsSection = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className="card-cyber text-center" 
+                className="card-cyber rgb-border text-center" 
                 data-aos="fade-up" 
                 data-aos-delay={index * 200}
               >

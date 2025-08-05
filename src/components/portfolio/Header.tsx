@@ -71,7 +71,7 @@ export const Header = () => {
                 <div key={item.id} className="flex items-center">
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className={`nav-link px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-primary ${
+                    className={`nav-link px-3 py-2 text-sm font-bold transition-all duration-300 hover:text-primary hover:scale-110 ${
                       activeSection === item.id ? 'active text-primary' : 'text-muted-foreground'
                     }`}
                   >
