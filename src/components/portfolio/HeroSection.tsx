@@ -3,21 +3,39 @@ import { ExternalLink } from 'lucide-react';
 
 export const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
-  const fullText = 'Full Stack Web and App Developer';
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  
+  const roles = [
+    'Full Stack Web and App Developer',
+    'Cybersecurity Enthusiast',
+    'AI & Machine Learning Explorer',
+    'Problem Solver & Innovator'
+  ];
   
   useEffect(() => {
     let currentIndex = 0;
+    let isDeleting = false;
+    const currentRole = roles[currentRoleIndex];
+    
     const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setDisplayText(fullText.slice(0, currentIndex + 1));
+      if (!isDeleting && currentIndex < currentRole.length) {
+        setDisplayText(currentRole.slice(0, currentIndex + 1));
         currentIndex++;
-      } else {
-        clearInterval(typingInterval);
+      } else if (!isDeleting && currentIndex === currentRole.length) {
+        setTimeout(() => {
+          isDeleting = true;
+        }, 2000);
+      } else if (isDeleting && currentIndex > 0) {
+        setDisplayText(currentRole.slice(0, currentIndex - 1));
+        currentIndex--;
+      } else if (isDeleting && currentIndex === 0) {
+        isDeleting = false;
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
       }
-    }, 100);
+    }, isDeleting ? 50 : 100);
 
     return () => clearInterval(typingInterval);
-  }, []);
+  }, [currentRoleIndex]);
 
   const openResume = () => {
     window.open('https://drive.google.com/file/d/1BLF_AY1a4XhZuhgKwA2-Axq0XzV2rRcr/view?usp=drivesdk', '_blank');
@@ -33,7 +51,7 @@ export const HeroSection = () => {
               <span className="text-cyber-glow">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
-              I'm a <span className="text-primary font-semibold">AI</span>
+              I'm a <span className="text-primary font-semibold min-h-[1.5em] inline-block">{displayText}</span>
             </p>
             <p className="text-sm lg:text-base text-muted-foreground mb-8 max-w-md">
               I create <span className="text-primary">Exciting Stuff</span> on the Internet. Passionate about building innovative solutions and exploring cutting-edge technologies.
