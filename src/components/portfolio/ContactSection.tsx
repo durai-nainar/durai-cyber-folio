@@ -69,7 +69,7 @@ export const ContactSection = () => {
             <div data-aos="fade-left">
               <div className="card-cyber rgb-border">
                 <h4 className="text-xl font-bold mb-2 rgb-text">Connect With Me</h4>
-                <p className="text-muted-foreground mb-6">I'm always open to connecting with like-minded individuals, collaborators, or potential employers. Whether you have a project in mind, a question about my work, or simply want to say hello, don't hesitate to reach out. I genuinely enjoy discussing ideas, solving problems, and exploring new opportunities.</p>
+                <p className="text-muted-foreground mb-6">I'm always open to connecting with like-minded individuals, collaborators, or potential employers. Whether you have a project in mind, a question about my work, or simply want to say hello, don't hesitate to reach out. I genuinely enjoy discussing ideas, solving problems, and exploring opportunities.</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="text-primary" size={20} />

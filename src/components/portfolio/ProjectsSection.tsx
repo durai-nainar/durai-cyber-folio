@@ -73,7 +73,7 @@ export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 bg-background relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-cyber-glow" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Projects
         </h2>
         
@@ -82,7 +82,7 @@ export const ProjectsSection = () => {
             {projects.map((project, index) => (
               <div 
                 key={index} 
-                className="card-cyber group cursor-pointer h-full" 
+                className="card-cyber rgb-border group cursor-pointer h-full" 
                 data-aos="zoom-in" 
                 data-aos-delay={index * 100}
               >

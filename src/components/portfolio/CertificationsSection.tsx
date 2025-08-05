@@ -37,7 +37,7 @@ export const CertificationsSection = () => {
   return (
     <section id="certifications" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-cyber-glow" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Certifications
         </h2>
         
@@ -47,7 +47,7 @@ export const CertificationsSection = () => {
             {certifications.slice(0, 3).map((cert, index) => (
               <div 
                 key={index} 
-                className="card-cyber group cursor-pointer text-center" 
+                className="card-cyber rgb-border group cursor-pointer text-center"
                 data-aos="zoom-in" 
                 data-aos-delay={index * 100}
                 onClick={() => window.open(cert.link, '_blank')}
@@ -72,7 +72,7 @@ export const CertificationsSection = () => {
             {certifications.slice(3, 6).map((cert, index) => (
               <div 
                 key={index + 3} 
-                className="card-cyber group cursor-pointer text-center" 
+                className="card-cyber rgb-border group cursor-pointer text-center" 
                 data-aos="zoom-in" 
                 data-aos-delay={(index + 3) * 100}
                 onClick={() => window.open(cert.link, '_blank')}
