@@ -64,32 +64,34 @@ export const Header = () => {
             Durai's Portfolio
           </div>
 
-          {/* Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <div key={item.id} className="flex items-center">
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={`nav-link px-4 py-2 text-sm font-medium transition-all duration-300 hover:text-primary ${
-                    activeSection === item.id ? 'active text-primary' : 'text-muted-foreground'
-                  }`}
-                >
-                  {item.label}
-                </button>
-                {index < navItems.length - 1 && (
-                  <div className="w-px h-4 bg-border mx-2"></div>
-                )}
-              </div>
-            ))}
-          </div>
+          <div className="flex items-center gap-4">
+            {/* Navigation */}
+            <div className="hidden md:flex items-center space-x-0.5">
+              {navItems.map((item, index) => (
+                <div key={item.id} className="flex items-center">
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className={`nav-link px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-primary ${
+                      activeSection === item.id ? 'active text-primary' : 'text-muted-foreground'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                  {index < navItems.length - 1 && (
+                    <div className="w-px h-4 bg-border mx-1"></div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          {/* Theme toggle */}
-          <button
-            onClick={toggleTheme}
-            className="btn-cyber p-2"
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="btn-cyber p-2"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </div>
         </div>
       </nav>
     </header>
