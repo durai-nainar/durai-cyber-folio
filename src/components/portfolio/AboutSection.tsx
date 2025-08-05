@@ -14,13 +14,15 @@ export const AboutSection = () => {
             About Me
           </h2>
           
-          <div className="space-y-6 text-lg leading-relaxed mb-12" data-aos="fade-up" data-aos-delay="200">
-            <p>
-              I am recently graduated BTech student in Computer Science, with a solid foundation in full-stack Java development, database design, and front-end technologies. I've built hands-on experience in cloud computing, cybersecurity, and artificial intelligence through practical internships, bootcamps, and personal projects.
-            </p>
-            <p>
-              With a strong command over Python, Java, SQL, and modern frameworks, I am deeply driven by problem-solving and innovation. I strive to create impactful solutions, work collaboratively, and continuously evolve by learning, adapting, and building for real-world applications.
-            </p>
+          <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 mb-12" data-aos="fade-up" data-aos-delay="200">
+            <div className="space-y-6 text-lg leading-relaxed">
+              <p>
+                I am recently graduated BTech student in Computer Science, with a solid foundation in full-stack Java development, database design, and front-end technologies. I've built hands-on experience in cloud computing, cybersecurity, and artificial intelligence through practical internships, bootcamps, and personal projects.
+              </p>
+              <p>
+                With a strong command over Python, Java, SQL, and modern frameworks, I am deeply driven by problem-solving and innovation. I strive to create impactful solutions, work collaboratively, and continuously evolve by learning, adapting, and building for real-world applications.
+              </p>
+            </div>
           </div>
 
           {/* Stats */}

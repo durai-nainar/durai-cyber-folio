@@ -60,9 +60,13 @@ export const ContactSection = () => {
           <h2 className="text-4xl font-bold text-center mb-6 text-cyber-glow" data-aos="fade-up">
             Get In Touch
           </h2>
-          <h3 className="text-2xl font-bold text-center mb-4 text-cyber-glow" data-aos="fade-up" data-aos-delay="100">
-            Let's Connect
-          </h3>
+          <div className="text-center mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div className="inline-block">
+              <h3 className="text-2xl font-bold text-cyber-glow border-b-2 border-primary pb-1">
+                Let's Connect
+              </h3>
+            </div>
+          </div>
           <p className="text-center text-lg mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="200">
             I am always ready and eager to talk — to share ideas, explore possibilities, and grow together.
           </p>
@@ -119,6 +123,18 @@ export const ContactSection = () => {
                   <div className="flex items-center gap-3">
                     <Mail className="text-primary" size={20} />
                     <span>durairajannainar@gmail.com</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="text-primary w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19.95 21L18.85 20.9L18.75 20.85C17.5 20.65 16.35 20.15 15.35 19.4L12.5 17.6L9.65 19.4C8.65 20.15 7.5 20.65 6.25 20.85L6.15 20.9L5.05 21C4.75 21 4.5 20.75 4.5 20.45V13C4.5 11.5 5.75 10.25 7.25 10.25H7.75V7.5C7.75 5.85 9.1 4.5 10.75 4.5H13.25C14.9 4.5 16.25 5.85 16.25 7.5V10.25H16.75C18.25 10.25 19.5 11.5 19.5 13V20.45C19.5 20.75 19.25 21 18.95 21H19.95ZM9.25 7.5V10.25H14.75V7.5C14.75 6.65 14.1 6 13.25 6H10.75C9.9 6 9.25 6.65 9.25 7.5Z"/>
+                    </svg>
+                    <span>+919542845096</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="text-primary w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Vijayawada, Andhra Pradesh</span>
                   </div>
                 </div>
                 
