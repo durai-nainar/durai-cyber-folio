@@ -1,4 +1,14 @@
+import { useEffect, useState } from 'react';
+
 export const TechStackSection = () => {
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasLoaded(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
   const techStack = {
     frontend: [
       { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
@@ -42,14 +52,13 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center rgb-text border-b-2 border-primary pb-2 inline-block">{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block border-b-2 border-primary pb-2">{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={index} 
-            className="bg-card/50 backdrop-blur-sm border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300"
-            data-aos="zoom-in" 
-            data-aos-delay={index * 100}
+            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300 ${hasLoaded ? 'animate-scale-in' : 'opacity-0'}`}
+            style={{ animationDelay: hasLoaded ? `${index * 100}ms` : '0ms' }}
           >
             <div className="w-10 h-10 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
               <img 
@@ -68,7 +77,7 @@ export const TechStackSection = () => {
   return (
     <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block" data-aos="fade-up">
           Tech Stack
         </h2>
         

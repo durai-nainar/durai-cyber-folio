@@ -5,15 +5,16 @@ export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
+    if (formData.name && formData.email && formData.subject && formData.message) {
       setShowSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setShowSuccess(false), 3000);
     }
   };
@@ -57,7 +58,7 @@ export const ContactSection = () => {
     <section id="contact" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6 rgb-text" data-aos="fade-up">
+          <h2 className="text-4xl font-bold text-center mb-6 text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block" data-aos="fade-up">
             Get In Touch
           </h2>
           <p className="text-center text-lg mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="200">
@@ -67,13 +68,19 @@ export const ContactSection = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div data-aos="fade-left">
-              <div className="card-cyber rgb-border">
-                <h4 className="text-xl font-bold mb-2 rgb-text">Connect With Me</h4>
+              <div className="bg-card shadow-lg border border-border rounded-2xl p-6">
+                <h4 className="text-xl font-bold mb-2 text-foreground bg-background dark:text-background dark:bg-foreground px-2 py-1 rounded inline-block">Connect With Me</h4>
                 <p className="text-muted-foreground mb-6">I'm always open to connecting with like-minded individuals, collaborators, or potential employers. Whether you have a project in mind, a question about my work, or simply want to say hello, don't hesitate to reach out. I genuinely enjoy discussing ideas, solving problems, exploring opportunities.</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="text-primary" size={20} />
                     <span>durairajannainar@gmail.com</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="text-primary w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>www.linkedin.com/in/durai-nainar</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <svg className="text-primary w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -96,10 +103,10 @@ export const ContactSection = () => {
                         <button
                         key={index}
                         onClick={() => window.open(social.url, '_blank')}
-                        className="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 group rgb-border"
+                        className="w-12 h-12 bg-primary/10 hover:bg-primary/20 rounded-full flex items-center justify-center shadow-md transition-all duration-300 group border border-border"
                         title={social.label}
                       >
-                        <social.icon className="rgb-text group-hover:scale-110 transition-transform" size={20} />
+                        <social.icon className="text-foreground bg-background dark:text-background dark:bg-foreground p-1 rounded group-hover:scale-110 transition-transform" size={20} />
                       </button>
                     ))}
                   </div>
@@ -109,8 +116,8 @@ export const ContactSection = () => {
 
             {/* Contact Form */}
             <div data-aos="fade-right">
-              <div className="card-cyber rgb-border">
-                <h4 className="text-xl font-bold mb-6 rgb-text text-center">Send Message</h4>
+              <div className="bg-card shadow-lg border border-border rounded-2xl p-6">
+                <h4 className="text-xl font-bold mb-6 text-foreground bg-background dark:text-background dark:bg-foreground px-2 py-1 rounded inline-block text-center">Send Message</h4>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <input
@@ -135,6 +142,17 @@ export const ContactSection = () => {
                     />
                   </div>
                   <div>
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Your Subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
+                    />
+                  </div>
+                  <div>
                     <textarea
                       name="message"
                       placeholder="Your Message"
@@ -145,7 +163,7 @@ export const ContactSection = () => {
                       className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
                     />
                   </div>
-                  <button type="submit" className="w-full btn-cyber rgb-bg flex items-center justify-center gap-2">
+                  <button type="submit" className="w-full btn-cyber flex items-center justify-center gap-2">
                     <Send size={20} />
                     Send Message
                   </button>
