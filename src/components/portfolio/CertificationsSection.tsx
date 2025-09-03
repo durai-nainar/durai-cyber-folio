@@ -92,12 +92,6 @@ export const CertificationsSection = () => {
             ))}
           </div>
         </div>
-        
-        <div className="text-center mt-12" data-aos="fade-up">
-          <p className="text-lg font-semibold animate-pulse">
-            <span className="text-red-500 animate-[color-shift_2s_infinite]">Click on any certificate to download</span>
-          </p>
-        </div>
       </div>
     </section>
   );

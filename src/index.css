@@ -318,25 +318,6 @@
   animation: rgb-text 3s linear infinite;
 }
 
-@keyframes color-shift {
-  0%, 100% { color: #ff0000; }
-  25% { color: #ffffff; }
-  50% { color: #ff0000; }
-  75% { color: #ffffff; }
-}
-
-.rgb-bg {
-  background: linear-gradient(45deg, #ff0080, #ff8000, #ffff00, #80ff00, #00ff80, #0080ff);
-  background-size: 600% 600%;
-  animation: rgb-bg-shift 3s ease-in-out infinite;
-}
-
-@keyframes rgb-bg-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @layer base {
   * {
     @apply border-border;

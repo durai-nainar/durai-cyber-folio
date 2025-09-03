@@ -96,7 +96,7 @@ export const HeroSection = () => {
           {/* Right Content - Profile Image */}
           <div className="flex-1 flex justify-center" data-aos="fade-left">
             <div className="relative">
-              <div className="rgb-border w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1">
+              <div className="rgb-border w-80 h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                   alt="Durai Rajan"
