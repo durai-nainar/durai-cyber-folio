@@ -143,10 +143,10 @@ export const ProjectsSection = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-12" data-aos="fade-up">
             <button 
               onClick={() => setShowModal(true)}
-              className="text-2xl font-bold text-foreground hover:text-primary transition-colors duration-300"
+              className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground px-6 py-3 rounded-lg"
             >
               Click Here to view More Projects
             </button>
