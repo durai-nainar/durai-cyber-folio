@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, Cpu } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [showThemeName, setShowThemeName] = useState(false);
+  const [themeName, setThemeName] = useState('');
   const {
     theme,
     setTheme
@@ -60,7 +62,27 @@ export const Header = () => {
     }
   };
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    let nextTheme;
+    let displayName;
+    
+    if (theme === 'light') {
+      nextTheme = 'dark';
+      displayName = 'Dark Theme';
+    } else if (theme === 'dark') {
+      nextTheme = 'cyberpunk';
+      displayName = 'Special Theme';
+    } else {
+      nextTheme = 'light';
+      displayName = 'Light Theme';
+    }
+    
+    setTheme(nextTheme);
+    setThemeName(displayName);
+    setShowThemeName(true);
+    
+    setTimeout(() => {
+      setShowThemeName(false);
+    }, 3000);
   };
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 cyber-bg rgb-border ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'} ${theme === 'light' ? 'bg-cyan-400 text-blue-900' : ''}`}>
       <nav className="container mx-auto px-6 py-4 ${theme === 'light' ? 'bg-cyan-400' : 'bg-gray-950'}">
@@ -81,9 +103,16 @@ export const Header = () => {
           </div>
 
           {/* Theme toggle */}
-          <button onClick={toggleTheme} className={`btn-cyber p-2 ${theme === 'light' ? 'text-blue-900' : ''}`}>
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          <div className="relative flex items-center">
+            <button onClick={toggleTheme} className={`btn-cyber p-2 ${theme === 'light' ? 'text-blue-900' : ''}`}>
+              {theme === 'light' ? <Moon size={20} /> : theme === 'dark' ? <Sun size={20} /> : <Cpu size={20} />}
+            </button>
+            {showThemeName && (
+              <div className="absolute left-full ml-2 bg-card border border-border rounded-lg px-3 py-1 text-sm font-medium text-foreground whitespace-nowrap animate-fade-in">
+                {themeName}
+              </div>
+            )}
+          </div>
         </div>
       </nav>
     </header>;
