@@ -53,6 +53,17 @@ export function ThemeProvider({
     setTheme: (theme: Theme) => {
       localStorage.setItem(storageKey, theme)
       setTheme(theme)
+      
+      // Trigger section animations on theme switch
+      setTimeout(() => {
+        const sections = document.querySelectorAll('[data-aos]')
+        sections.forEach(section => {
+          section.classList.remove('aos-animate')
+          setTimeout(() => {
+            section.classList.add('aos-animate')
+          }, 50)
+        })
+      }, 100)
     },
   }
 

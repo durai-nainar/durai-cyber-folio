@@ -2,12 +2,40 @@ import { useEffect, useState } from 'react';
 
 export const TechStackSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setHasLoaded(true);
     }, 500);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Reset animations when theme changes
+  useEffect(() => {
+    const handleThemeChange = () => {
+      setHasLoaded(false);
+      setAnimationKey(prev => prev + 1);
+      setTimeout(() => setHasLoaded(true), 100);
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const target = mutation.target as Element;
+          if (target === document.documentElement) {
+            handleThemeChange();
+          }
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
   }, []);
   const techStack = {
     frontend: [
@@ -52,13 +80,16 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block border-b-2 border-primary pb-2">{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center text-foreground">{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
-            key={index} 
-            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300 ${hasLoaded ? 'animate-scale-in' : 'opacity-0'}`}
-            style={{ animationDelay: hasLoaded ? `${index * 100}ms` : '0ms' }}
+            key={`${animationKey}-${index}`}
+            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300 ${hasLoaded ? 'animate-bounce-in' : 'opacity-0 scale-0'}`}
+            style={{ 
+              animationDelay: hasLoaded ? `${index * 150}ms` : '0ms',
+              animationFillMode: 'both'
+            }}
           >
             <div className="w-10 h-10 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
               <img 
