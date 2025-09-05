@@ -3,7 +3,7 @@ import { Send, CheckCircle } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 
 export const ContactSection = () => {
-  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_ID"); // Replace with your actual Formspree form ID
+  const [state, handleSubmit] = useForm("xpwjonrb");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,6 +13,13 @@ export const ContactSection = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Form validation
+    if (formData.name.length < 1) return;
+    if (formData.email.length < 1) return;
+    if (formData.subject.length < 5) return;
+    if (formData.message.length < 10) return;
+    
     await handleSubmit(e);
     if (state.succeeded) {
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -205,7 +212,11 @@ export const ContactSection = () => {
                       errors={state.errors}
                     />
                   </div>
-                  <button type="submit" disabled={state.submitting} className="w-full btn-cyber flex items-center justify-center gap-2 disabled:opacity-50">
+                  <button 
+                    type="submit" 
+                    disabled={state.submitting || formData.name.length < 1 || formData.email.length < 1 || formData.subject.length < 5 || formData.message.length < 10} 
+                    className="w-full btn-cyber flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
                     <Send size={20} />
                     {state.submitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -216,13 +227,23 @@ export const ContactSection = () => {
         </div>
       </div>
       
-      {/* Success Popup */}
+      {/* Success/Error Popups */}
       {state.succeeded && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
-          <div className="card-cyber text-center max-w-sm mx-4">
-            <CheckCircle className="text-green-500 mx-auto mb-4" size={48} />
-            <h3 className="text-xl font-bold mb-2 text-cyber-glow">Message Sent Successfully!</h3>
+          <div className="bg-green-500/10 border border-green-500 rounded-2xl p-6 text-center max-w-sm mx-4 shadow-2xl">
+            <div className="text-green-500 mx-auto mb-4 text-5xl">✅</div>
+            <h3 className="text-xl font-bold mb-2 text-green-500">Message sent successfully!</h3>
             <p className="text-muted-foreground">Thank you for reaching out. I'll get back to you soon.</p>
+          </div>
+        </div>
+      )}
+      
+      {state.errors && Object.keys(state.errors).length > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+          <div className="bg-red-500/10 border border-red-500 rounded-2xl p-6 text-center max-w-sm mx-4 shadow-2xl">
+            <div className="text-red-500 mx-auto mb-4 text-5xl">❌</div>
+            <h3 className="text-xl font-bold mb-2 text-red-500">Failed to send. Please try again.</h3>
+            <p className="text-muted-foreground">Please check your inputs and try again.</p>
           </div>
         </div>
       )}

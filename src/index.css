@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Light theme - Pink + Orange + Blue mix */
-    --background: 340 60% 97%;
+    /* Light theme - Gradient mix of pink, orange, blue, purple */
+    --background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
     --foreground: 210 100% 20%;
     
     --card: 330 35% 98%;
@@ -325,12 +325,17 @@
   animation: animate-slide-in 0.6s ease-out forwards;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Light theme body background */
+.light {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
+  min-height: 100vh;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Seablue color utility */
+.text-seablue {
+  color: #1e40af;
+}
+
+.text-seablue-400 {
+  color: #3b82f6;
 }

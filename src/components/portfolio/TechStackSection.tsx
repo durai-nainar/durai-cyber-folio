@@ -11,32 +11,7 @@ export const TechStackSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Reset animations when theme changes
-  useEffect(() => {
-    const handleThemeChange = () => {
-      setHasLoaded(false);
-      setAnimationKey(prev => prev + 1);
-      setTimeout(() => setHasLoaded(true), 100);
-    };
-
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          const target = mutation.target as Element;
-          if (target === document.documentElement) {
-            handleThemeChange();
-          }
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  // Animations run only once on component mount, stay idle on scrolling
   const techStack = {
     frontend: [
       { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
