@@ -80,12 +80,12 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center text-foreground">{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1e40af'}}>{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={`${animationKey}-${index}`}
-            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300 ${hasLoaded ? 'animate-bounce-in' : 'opacity-0 scale-0'}`}
+            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'animate-slide-in opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
             style={{ 
               animationDelay: hasLoaded ? `${index * 150}ms` : '0ms',
               animationFillMode: 'both'
@@ -98,7 +98,7 @@ export const TechStackSection = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <p className="text-xs font-medium text-foreground">{tech.name}</p>
+            <p className="text-xs font-medium" style={{color: '#1e40af'}}>{tech.name}</p>
           </div>
         ))}
       </div>
@@ -108,7 +108,7 @@ export const TechStackSection = () => {
   return (
     <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Tech Stack
         </h2>
         

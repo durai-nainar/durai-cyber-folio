@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Light theme - Pink + White Creamy */
-    --background: 340 40% 96%;
-    --foreground: 240 10% 3.9%;
+    /* Light theme - Pink + Orange + Blue mix */
+    --background: 340 60% 97%;
+    --foreground: 210 100% 20%;
     
     --card: 330 35% 98%;
     --card-foreground: 240 10% 3.9%;
@@ -310,8 +310,19 @@
   }
 }
 
-.animate-bounce-in {
-  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+@keyframes animate-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: animate-slide-in 0.6s ease-out forwards;
 }
 
 @layer base {
