@@ -339,3 +339,30 @@
 .text-seablue-400 {
   color: #3b82f6;
 }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Light theme scrollbar */
+.light ::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
