@@ -227,13 +227,13 @@ export const ContactSection = () => {
       {/* Success/Error Popups */}
       {state.succeeded && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-green-500/10 border-2 border-green-500 rounded-2xl p-8 text-center max-w-sm mx-4 shadow-2xl animate-scale-in">
-            <div className="text-green-500 mx-auto mb-4 text-6xl">✅</div>
-            <h3 className="text-xl font-bold mb-2 text-green-500">Message Sent Successfully</h3>
-            <p className="text-muted-foreground">Thank you for reaching out. I'll get back to you soon.</p>
+          <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-emerald-900/90 dark:via-green-900/90 dark:to-teal-900/90 border-2 border-emerald-400 dark:border-emerald-600 rounded-3xl p-8 text-center max-w-sm mx-4 shadow-2xl shadow-emerald-500/25 animate-scale-in backdrop-blur-lg">
+            <div className="text-emerald-600 dark:text-emerald-400 mx-auto mb-4 text-6xl animate-bounce">✅</div>
+            <h3 className="text-xl font-bold mb-2 text-emerald-700 dark:text-emerald-300">Message Sent Successfully</h3>
+            <p className="text-emerald-600/80 dark:text-emerald-400/80 mb-4">Thank you for reaching out. I'll get back to you soon.</p>
             <button 
               onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              className="mt-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium"
             >
               Close
             </button>

@@ -1,26 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useTheme } from './ThemeProvider';
 
 export const TechStackSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const { theme } = useTheme();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasLoaded(true);
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   // Reset animation when theme changes
   useEffect(() => {
     setHasLoaded(false);
+    setHasAnimated(false);
     setAnimationKey(prev => prev + 1);
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
   }, [theme]);
 
   // Animations run only once on component mount, stay idle on scrolling
@@ -93,7 +103,7 @@ export const TechStackSection = () => {
   );
 
   return (
-    <section id="techstack" className="py-20 cyber-bg relative">
+    <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
           Tech Stack
