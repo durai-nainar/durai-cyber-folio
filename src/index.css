@@ -394,9 +394,15 @@
   animation: tech-bounce 0.6s ease-in-out, tech-glow 1s ease-in-out infinite;
 }
 
-/* Light theme body background - Soft mint/cyan like uploaded image */
+/* Light theme body background - Gradient like uploaded image */
 .light {
-  background: hsl(180, 20%, 95%);
+  background: linear-gradient(135deg, 
+    #f3e8ff 0%,    /* Light purple */
+    #fae8ff 25%,   /* Light pink */
+    #e0f2fe 50%,   /* Light cyan */
+    #a7f3d0 75%,   /* Light mint */
+    #ecfccb 100%   /* Light lime */
+  );
   min-height: 100vh;
 }
 
@@ -481,4 +487,42 @@
 
 .cyberpunk .btn-cyber {
   animation: rgb-button 3s linear infinite;
+}
+
+/* Tech stack white shadow for special theme */
+.cyberpunk .tech-card {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cyberpunk .tech-card:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px);
+}
+
+/* Success message styling - white with light pink mix */
+.success-message {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(252, 231, 243, 0.95) 100%
+  );
+  border: 2px solid rgba(236, 72, 153, 0.3);
+}
+
+.success-message h3,
+.success-message p {
+  color: #4a5568 !important;
+}
+
+.success-emoji {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  margin: 0 auto;
 }

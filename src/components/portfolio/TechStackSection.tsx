@@ -77,12 +77,12 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1E4BFF'}}>{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center cyberpunk:rgb-text-animation" style={{color: '#1E4BFF'}}>{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={`${animationKey}-${index}`}
-            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer transition-all duration-300 dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
+            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer transition-all duration-500 hover:scale-110 hover:rotate-3 hover:shadow-2xl dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
           >
             <div className="w-12 h-12 mx-auto mb-3 transition-transform duration-300">
               <img 
@@ -101,7 +101,7 @@ export const TechStackSection = () => {
   return (
     <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 cyberpunk:rgb-text-animation" style={{color: '#1E4BFF'}} data-aos="fade-up">
           Tech Stack
         </h2>
         
