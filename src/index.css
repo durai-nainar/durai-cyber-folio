@@ -6,71 +6,76 @@
 
 @layer base {
   :root {
-    /* Light theme - Gradient mix of pink, orange, blue, purple */
-    --background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
-    --foreground: 210 100% 20%;
+    /* Light theme - Clean white background like reference */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
     
-    --card: 330 35% 98%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
     
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 44 30% 97%;
-    --primary-glow: 240 5.9% 15%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 222.2 47.4% 20%;
     
-    --secondary: 42 25% 94%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
     
-    --accent: 38 30% 92%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 210 40% 93%;
+    --accent-foreground: 222.2 84% 4.9%;
     
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
     
-    --muted: 40 20% 96%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
     
-    --border: 38 20% 88%;
-    --input: 38 20% 88%;
-    --ring: 240 5.9% 10%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
     
-    --cyber-gradient: linear-gradient(135deg, hsl(240 5.9% 10%), hsl(240 5.9% 15%));
-    --cyber-glow: 0 0 20px hsl(240 5.9% 10% / 0.3);
-    --cyber-text-glow: 0 0 10px hsl(240 5.9% 10% / 0.5);
+    --cyber-gradient: linear-gradient(135deg, hsl(222.2 47.4% 11.2%), hsl(222.2 47.4% 20%));
+    --cyber-glow: 0 0 20px hsl(222.2 47.4% 11.2% / 0.3);
+    --cyber-text-glow: 0 0 10px hsl(222.2 47.4% 11.2% / 0.5);
     
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark theme - Modern and sleek */
-    --background: 240 10% 3.9%;
+    /* Dark theme - Deep navy like reference with RGB text styling */
+    --background: 222 47% 11%;
     --foreground: 0 0% 98%;
     
-    --card: 240 10% 3.9%;
+    --card: 222 47% 11%;
     --card-foreground: 0 0% 98%;
     
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --primary-glow: 0 0% 90%;
+    --primary: 210 40% 70%;
+    --primary-foreground: 222 47% 11%;
+    --primary-glow: 210 40% 80%;
     
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 217 32% 17%;
     --secondary-foreground: 0 0% 98%;
     
-    --accent: 240 3.7% 15.9%;
+    --accent: 217 32% 17%;
     --accent-foreground: 0 0% 98%;
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
     
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 210 40% 70%;
     
-    --cyber-gradient: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 90%));
-    --cyber-glow: 0 0 30px hsl(0 0% 98% / 0.4);
-    --cyber-text-glow: 0 0 15px hsl(0 0% 98% / 0.6);
+    --cyber-gradient: linear-gradient(135deg, hsl(210 40% 70%), hsl(210 40% 80%));
+    --cyber-glow: 0 0 30px hsl(210 40% 70% / 0.4);
+    --cyber-text-glow: 0 0 15px hsl(210 40% 70% / 0.6);
+    
+    /* RGB colors for dark theme text */
+    --rgb-primary: 100, 149, 237;
+    --rgb-secondary: 75, 85, 99;
+    --rgb-accent: 139, 69, 19;
   }
 
   .cyberpunk {
@@ -325,10 +330,41 @@
   animation: animate-slide-in 0.6s ease-out forwards;
 }
 
-/* Light theme body background */
+/* Tech stack hover animations like reference */
+@keyframes tech-bounce {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-5px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes tech-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4); }
+}
+
+.tech-item:hover {
+  animation: tech-bounce 0.6s ease-in-out, tech-glow 1s ease-in-out infinite;
+}
+
+/* Light theme body background - Clean white like reference */
 .light {
-  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
+  background: #ffffff;
   min-height: 100vh;
+}
+
+/* Dark theme RGB styling */
+.dark .card-cyber {
+  background: linear-gradient(145deg, 
+    rgba(var(--rgb-primary), 0.1), 
+    rgba(var(--rgb-secondary), 0.05)
+  );
+  border: 1px solid rgba(var(--rgb-primary), 0.2);
+}
+
+.dark .tech-card {
+  background: rgba(var(--rgb-primary), 0.1);
+  border: 1px solid rgba(var(--rgb-primary), 0.2);
+  backdrop-filter: blur(10px);
 }
 
 /* Seablue color utility */
