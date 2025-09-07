@@ -82,11 +82,7 @@ export const TechStackSection = () => {
         {technologies.map((tech, index) => (
           <div 
             key={`${animationKey}-${index}`}
-            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'animate-slide-in opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
-            style={{ 
-              animationDelay: hasLoaded ? `${index * 150}ms` : '0ms',
-              animationFillMode: 'both'
-            }}
+            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer transition-all duration-300 dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
           >
             <div className="w-12 h-12 mx-auto mb-3 transition-transform duration-300">
               <img 
