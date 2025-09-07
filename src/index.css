@@ -325,56 +325,10 @@
   animation: animate-slide-in 0.6s ease-out forwards;
 }
 
-/* Light theme body background - Purple to cyan gradient */
+/* Light theme body background */
 .light {
-  background: linear-gradient(135deg, 
-    hsl(280, 60%, 88%) 0%,    /* Light purple */
-    hsl(300, 50%, 85%) 25%,   /* Lavender */
-    hsl(200, 80%, 80%) 75%,   /* Light cyan */
-    hsl(180, 70%, 85%) 100%   /* Turquoise */
-  );
+  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
   min-height: 100vh;
-  position: relative;
-}
-
-/* Dark theme body background - Starry space */
-.dark {
-  background: radial-gradient(ellipse at center, 
-    hsl(220, 50%, 15%) 0%,
-    hsl(230, 60%, 8%) 40%,
-    hsl(240, 80%, 5%) 100%
-  );
-  min-height: 100vh;
-  position: relative;
-}
-
-.dark::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 160px 30px, #fff, transparent),
-    radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 250px 20px, #fff, transparent),
-    radial-gradient(1px 1px at 300px 90px, rgba(255,255,255,0.5), transparent);
-  background-repeat: repeat;
-  background-size: 320px 120px;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: -1;
-  animation: stars-twinkle 4s ease-in-out infinite alternate;
-}
-
-@keyframes stars-twinkle {
-  0% { opacity: 0.4; }
-  100% { opacity: 0.8; }
 }
 
 /* Seablue color utility */
