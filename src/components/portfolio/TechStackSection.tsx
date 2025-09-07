@@ -1,39 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import { useTheme } from './ThemeProvider';
-
 export const TechStackSection = () => {
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasLoaded(true);
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  // Reset animation when theme changes
-  useEffect(() => {
-    setHasLoaded(false);
-    setHasAnimated(false);
-    setAnimationKey(prev => prev + 1);
-  }, [theme]);
-
-  // Animations run only once on component mount, stay idle on scrolling
   const techStack = {
     frontend: [
       { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
@@ -77,16 +42,14 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1E4BFF'}}>{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center rgb-text border-b-2 border-primary pb-2 inline-block">{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
-            key={`${animationKey}-${index}`}
-            className={`bg-card/50 backdrop-blur-sm shadow-md border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'animate-slide-in opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
-            style={{ 
-              animationDelay: hasLoaded ? `${index * 150}ms` : '0ms',
-              animationFillMode: 'both'
-            }}
+            key={index} 
+            className="bg-card/50 backdrop-blur-sm border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300"
+            data-aos="zoom-in" 
+            data-aos-delay={index * 100}
           >
             <div className="w-10 h-10 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
               <img 
@@ -95,7 +58,7 @@ export const TechStackSection = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <p className="text-xs font-medium" style={{color: '#1E4BFF'}}>{tech.name}</p>
+            <p className="text-xs font-medium text-foreground">{tech.name}</p>
           </div>
         ))}
       </div>
@@ -103,9 +66,9 @@ export const TechStackSection = () => {
   );
 
   return (
-    <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
+    <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Tech Stack
         </h2>
         
