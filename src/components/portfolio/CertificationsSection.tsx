@@ -1,6 +1,9 @@
-import { Award } from 'lucide-react';
+import { Award, X } from 'lucide-react';
+import { useState } from 'react';
 
 export const CertificationsSection = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const certifications = [
     {
       title: 'Front-End Web Development – MyCaptain',
@@ -34,10 +37,23 @@ export const CertificationsSection = () => {
     }
   ];
 
+  const additionalCertifications = [
+    { name: 'Advanced JavaScript Concepts', link: 'https://certificate-link1.com' },
+    { name: 'Cloud Computing with AWS', link: 'https://certificate-link2.com' },
+    { name: 'Machine Learning Fundamentals', link: 'https://certificate-link3.com' },
+    { name: 'Docker & Kubernetes Mastery', link: 'https://certificate-link4.com' },
+    { name: 'Mobile App Development', link: 'https://certificate-link5.com' },
+    { name: 'Database Management Systems', link: 'https://certificate-link6.com' },
+    { name: 'DevOps Engineering Pipeline', link: 'https://certificate-link7.com' },
+    { name: 'Blockchain Technology', link: 'https://certificate-link8.com' },
+    { name: 'UI/UX Design Principles', link: 'https://certificate-link9.com' },
+    { name: 'Data Structures & Algorithms', link: 'https://certificate-link10.com' }
+  ];
+
   return (
     <section id="certifications" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Certifications
         </h2>
         
@@ -47,7 +63,7 @@ export const CertificationsSection = () => {
             {certifications.slice(0, 3).map((cert, index) => (
               <div 
                 key={index} 
-                className="card-cyber rgb-border group cursor-pointer text-center"
+                className="bg-card shadow-lg border border-border group cursor-pointer text-center rounded-2xl p-4"
                 data-aos="zoom-in" 
                 data-aos-delay={index * 100}
                 onClick={() => window.open(cert.link, '_blank')}
@@ -62,7 +78,7 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
+                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
               </div>
             ))}
           </div>
@@ -72,7 +88,7 @@ export const CertificationsSection = () => {
             {certifications.slice(3, 6).map((cert, index) => (
               <div 
                 key={index + 3} 
-                className="card-cyber rgb-border group cursor-pointer text-center" 
+                className="bg-card shadow-lg border border-border group cursor-pointer text-center rounded-2xl p-4" 
                 data-aos="zoom-in" 
                 data-aos-delay={(index + 3) * 100}
                 onClick={() => window.open(cert.link, '_blank')}
@@ -87,17 +103,48 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
+                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
               </div>
             ))}
           </div>
         </div>
         
         <div className="text-center mt-12" data-aos="fade-up">
-          <p className="text-lg font-semibold animate-pulse">
-            <span className="text-red-500 animate-[color-shift_2s_infinite]">Click on any certificate to download</span>
-          </p>
+          <button 
+            onClick={() => setShowModal(true)}
+            className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground light:bg-white light:text-black px-6 py-3 rounded-lg shadow-lg hover:shadow-xl"
+          >
+            Click Here to view More Certificates
+          </button>
         </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+            <div className="bg-card shadow-2xl border border-border rounded-2xl p-8 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-bold text-foreground">Additional Certificates</h3>
+                <button 
+                  onClick={() => setShowModal(false)}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+              <div className="space-y-3">
+                {additionalCertifications.map((cert, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => window.open(cert.link, '_blank')}
+                    className="bg-background border border-border rounded-lg p-4 text-center cursor-pointer hover:bg-primary/10 transition-colors"
+                  >
+                    <p className="font-medium text-foreground">{cert.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
