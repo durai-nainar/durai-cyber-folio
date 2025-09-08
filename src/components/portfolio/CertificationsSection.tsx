@@ -53,7 +53,7 @@ export const CertificationsSection = () => {
   return (
     <section id="certifications" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
           Certifications
         </h2>
         
@@ -78,7 +78,7 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
+                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
+                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
               </div>
             ))}
           </div>

@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Light theme - Gradient mix of pink, orange, blue, purple */
-    --background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
-    --foreground: 210 100% 20%;
+    /* Light theme - Pink + White Creamy */
+    --background: 340 40% 96%;
+    --foreground: 240 10% 3.9%;
     
     --card: 330 35% 98%;
     --card-foreground: 240 10% 3.9%;
@@ -310,32 +310,16 @@
   }
 }
 
-@keyframes animate-slide-in {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+
+  body {
+    @apply bg-background text-foreground;
   }
-}
-
-.animate-slide-in {
-  animation: animate-slide-in 0.6s ease-out forwards;
-}
-
-/* Light theme body background */
-.light {
-  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 25%, #eff6ff 50%, #faf5ff 75%, #fef7f7 100%);
-  min-height: 100vh;
-}
-
-/* Seablue color utility */
-.text-seablue {
-  color: #1e40af;
-}
-
-.text-seablue-400 {
-  color: #3b82f6;
 }
