@@ -53,7 +53,7 @@ export const CertificationsSection = () => {
   return (
     <section id="certifications" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Certifications
         </h2>
         
@@ -78,7 +78,7 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
+                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
               </div>
             ))}
           </div>
@@ -103,7 +103,7 @@ export const CertificationsSection = () => {
                     <Award className="text-primary" size={48} />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-cyber-glow">{cert.title}</h3>
+                <h3 className="text-lg font-bold" style={{color: '#1e40af'}}>{cert.title}</h3>
               </div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export const CertificationsSection = () => {
         <div className="text-center mt-12" data-aos="fade-up">
           <button 
             onClick={() => setShowModal(true)}
-            className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground px-6 py-3 rounded-lg"
+            className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground light:bg-white light:text-black px-6 py-3 rounded-lg shadow-lg hover:shadow-xl"
           >
             Click Here to view More Certificates
           </button>

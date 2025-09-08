@@ -88,7 +88,7 @@ export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 bg-background relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground cyberpunk:rgb-text-animation" data-aos="fade-up">
           Projects
         </h2>
         
@@ -110,7 +110,7 @@ export const ProjectsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
-                <h3 className="text-lg font-bold mb-3 text-cyber-glow">{project.title}</h3>
+                <h3 className="text-lg font-bold mb-3 text-cyber-glow cyberpunk:rgb-text-animation">{project.title}</h3>
                 
                 <div className="flex items-center gap-2 mb-4">
                   {project.technologies.map((tech, i) => (
@@ -126,14 +126,14 @@ export const ProjectsSection = () => {
                 <div className="flex gap-3 mt-auto">
                   <button 
                     onClick={() => window.open(project.githubLink, '_blank')}
-                    className="flex-1 btn-cyber text-sm py-2 flex items-center justify-center gap-2"
+                    className="flex-1 btn-cyber cyberpunk:rgb-button-animation text-sm py-2 flex items-center justify-center gap-2"
                   >
                     <Github size={16} />
                     GitHub
                   </button>
                   <button 
                     onClick={() => window.open(project.demoLink, '_blank')}
-                    className="flex-1 btn-cyber text-sm py-2 flex items-center justify-center gap-2"
+                    className="flex-1 btn-cyber cyberpunk:rgb-button-animation text-sm py-2 flex items-center justify-center gap-2"
                   >
                     <ExternalLink size={16} />
                     Demo
@@ -146,7 +146,7 @@ export const ProjectsSection = () => {
           <div className="text-center mt-12" data-aos="fade-up">
             <button 
               onClick={() => setShowModal(true)}
-              className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground px-6 py-3 rounded-lg"
+              className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform bg-white text-black border border-border px-6 py-3 rounded-lg shadow-lg"
             >
               Click Here to view More Projects
             </button>
