@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Light theme - Soft mint/cyan background like uploaded image */
-    --background: 180 20% 95%;
+    /* Light theme - Clean white background like reference */
+    --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     
     --card: 0 0% 100%;
@@ -79,7 +79,7 @@
   }
 
   .cyberpunk {
-    /* Cyberpunk theme - Dark blue futuristic with RGB animations */
+    /* Cyberpunk theme - Dark blue futuristic */
     --background: 220 100% 3%;
     --foreground: 180 100% 90%;
     
@@ -109,14 +109,6 @@
     --cyber-gradient: linear-gradient(135deg, hsl(180 100% 50%), hsl(280 100% 70%));
     --cyber-glow: 0 0 30px hsl(180 100% 50% / 0.5);
     --cyber-text-glow: 0 0 15px hsl(180 100% 50% / 0.8);
-    
-    /* RGB Animation Colors */
-    --rgb-red: 255, 0, 0;
-    --rgb-green: 0, 255, 0;
-    --rgb-blue: 0, 0, 255;
-    --rgb-cyan: 0, 255, 255;
-    --rgb-magenta: 255, 0, 255;
-    --rgb-yellow: 255, 255, 0;
   }
 
 }
@@ -294,46 +286,6 @@
   }
 }
 
-/* RGB Color Animation Keyframes for Cyberpunk Theme */
-@keyframes rgb-border {
-  0% { border-color: rgb(var(--rgb-red)); box-shadow: 0 0 10px rgb(var(--rgb-red)); }
-  16.66% { border-color: rgb(var(--rgb-yellow)); box-shadow: 0 0 10px rgb(var(--rgb-yellow)); }
-  33.33% { border-color: rgb(var(--rgb-green)); box-shadow: 0 0 10px rgb(var(--rgb-green)); }
-  50% { border-color: rgb(var(--rgb-cyan)); box-shadow: 0 0 10px rgb(var(--rgb-cyan)); }
-  66.66% { border-color: rgb(var(--rgb-blue)); box-shadow: 0 0 10px rgb(var(--rgb-blue)); }
-  83.33% { border-color: rgb(var(--rgb-magenta)); box-shadow: 0 0 10px rgb(var(--rgb-magenta)); }
-  100% { border-color: rgb(var(--rgb-red)); box-shadow: 0 0 10px rgb(var(--rgb-red)); }
-}
-
-@keyframes rgb-text {
-  0% { color: rgb(var(--rgb-red)); text-shadow: 0 0 10px rgb(var(--rgb-red)); }
-  16.66% { color: rgb(var(--rgb-yellow)); text-shadow: 0 0 10px rgb(var(--rgb-yellow)); }
-  33.33% { color: rgb(var(--rgb-green)); text-shadow: 0 0 10px rgb(var(--rgb-green)); }
-  50% { color: rgb(var(--rgb-cyan)); text-shadow: 0 0 10px rgb(var(--rgb-cyan)); }
-  66.66% { color: rgb(var(--rgb-blue)); text-shadow: 0 0 10px rgb(var(--rgb-blue)); }
-  83.33% { color: rgb(var(--rgb-magenta)); text-shadow: 0 0 10px rgb(var(--rgb-magenta)); }
-  100% { color: rgb(var(--rgb-red)); text-shadow: 0 0 10px rgb(var(--rgb-red)); }
-}
-
-@keyframes rgb-button {
-  0% { 
-    background: linear-gradient(135deg, rgb(var(--rgb-red)), rgb(var(--rgb-yellow)));
-    box-shadow: 0 0 20px rgb(var(--rgb-red) / 0.5);
-  }
-  33.33% { 
-    background: linear-gradient(135deg, rgb(var(--rgb-green)), rgb(var(--rgb-cyan)));
-    box-shadow: 0 0 20px rgb(var(--rgb-green) / 0.5);
-  }
-  66.66% { 
-    background: linear-gradient(135deg, rgb(var(--rgb-blue)), rgb(var(--rgb-magenta)));
-    box-shadow: 0 0 20px rgb(var(--rgb-blue) / 0.5);
-  }
-  100% { 
-    background: linear-gradient(135deg, rgb(var(--rgb-red)), rgb(var(--rgb-yellow)));
-    box-shadow: 0 0 20px rgb(var(--rgb-red) / 0.5);
-  }
-}
-
 /* Enhanced animations for theme switching */
 .animate-theme-switch {
   animation: theme-switch-pulse 0.5s ease-in-out;
@@ -394,15 +346,9 @@
   animation: tech-bounce 0.6s ease-in-out, tech-glow 1s ease-in-out infinite;
 }
 
-/* Light theme body background - Gradient like uploaded image */
+/* Light theme body background - Clean white like reference */
 .light {
-  background: linear-gradient(135deg, 
-    #f3e8ff 0%,    /* Light purple */
-    #fae8ff 25%,   /* Light pink */
-    #e0f2fe 50%,   /* Light cyan */
-    #a7f3d0 75%,   /* Light mint */
-    #ecfccb 100%   /* Light lime */
-  );
+  background: #ffffff;
   min-height: 100vh;
 }
 
@@ -455,74 +401,4 @@
 
 .light ::-webkit-scrollbar-thumb:hover {
   background: #333333;
-}
-
-/* Cyberpunk Theme RGB Animations */
-.cyberpunk .rgb-text-animation {
-  animation: rgb-text 3s linear infinite;
-}
-
-.cyberpunk .rgb-border-animation {
-  animation: rgb-border 3s linear infinite;
-}
-
-.cyberpunk .rgb-button-animation {
-  animation: rgb-button 3s linear infinite;
-}
-
-/* Apply RGB animations to specific elements in cyberpunk theme */
-.cyberpunk h1,
-.cyberpunk h2,
-.cyberpunk h3,
-.cyberpunk .portfolio-title,
-.cyberpunk .hero-name {
-  animation: rgb-text 3s linear infinite;
-}
-
-.cyberpunk .card-cyber,
-.cyberpunk .tech-card,
-.cyberpunk .btn-cyber {
-  animation: rgb-border 3s linear infinite;
-}
-
-.cyberpunk .btn-cyber {
-  animation: rgb-button 3s linear infinite;
-}
-
-/* Tech stack white shadow for special theme */
-.cyberpunk .tech-card {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.cyberpunk .tech-card:hover {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.2);
-  transform: translateY(-10px);
-}
-
-/* Success message styling - white with light pink mix */
-.success-message {
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(252, 231, 243, 0.95) 100%
-  );
-  border: 2px solid rgba(236, 72, 153, 0.3);
-}
-
-.success-message h3,
-.success-message p {
-  color: #4a5568 !important;
-}
-
-.success-emoji {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 24px;
-  margin: 0 auto;
 }
