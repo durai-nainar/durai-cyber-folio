@@ -33,7 +33,7 @@ export const ExperienceSection = () => {
   return (
     <section id="experience" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Experience / Internships
         </h2>
         

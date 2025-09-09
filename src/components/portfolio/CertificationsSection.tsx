@@ -112,7 +112,7 @@ export const CertificationsSection = () => {
         <div className="text-center mt-12" data-aos="fade-up">
           <button 
             onClick={() => setShowModal(true)}
-            className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground light:bg-white light:text-black px-6 py-3 rounded-lg shadow-lg hover:shadow-xl"
+            className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform text-foreground bg-background dark:text-background dark:bg-foreground px-6 py-3 rounded-lg"
           >
             Click Here to view More Certificates
           </button>
