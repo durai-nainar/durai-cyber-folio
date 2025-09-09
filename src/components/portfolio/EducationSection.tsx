@@ -28,7 +28,7 @@ export const EducationSection = () => {
   return (
     <section id="education" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Education Timeline
         </h2>
         
@@ -36,13 +36,13 @@ export const EducationSection = () => {
           <div className="space-y-8">
             {education.map((edu, index) => (
               <div key={index} className="w-full" data-aos="fade-up" data-aos-delay={index * 200}>
-                <div className="bg-card shadow-lg border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-xl theme-border cyberpunk:rgb-bg-line">
+                <div className="bg-card shadow-lg border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                       <edu.icon className="text-primary-foreground" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold px-2 py-1 rounded inline-block light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation">{edu.degree}</h3>
+                      <h3 className="text-xl font-bold px-2 py-1 rounded inline-block" style={{color: index === 0 ? '#ff8c00' : index === 1 ? '#0056b3' : '#228b22'}}>{edu.degree}</h3>
                       <p className="text-muted-foreground">{edu.year}</p>
                     </div>
                   </div>

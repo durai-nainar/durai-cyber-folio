@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Send } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
-import { MessagePopup } from './MessagePopup';
 
 export const ContactSection = () => {
   const [state, handleSubmit] = useForm("xpwjonrb");
@@ -11,21 +10,15 @@ export const ContactSection = () => {
     subject: '',
     message: ''
   });
-  const [showPopup, setShowPopup] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
 
   // Reset form after successful submission
   useEffect(() => {
     if (state.succeeded) {
       console.log('✅ Message sent successfully!', state);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSuccess(true);
-      setShowPopup(true);
     }
     if (state.errors && Object.keys(state.errors).length > 0) {
       console.error('❌ Message failed to send:', state.errors);
-      setIsSuccess(false);
-      setShowPopup(true);
     }
   }, [state.succeeded, state.errors]);
 
@@ -89,7 +82,7 @@ export const ContactSection = () => {
     <section id="contact" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6 light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation" data-aos="fade-up">
+          <h2 className="text-4xl font-bold text-center mb-6" style={{color: '#1e40af'}} data-aos="fade-up">
             Get In Touch
           </h2>
           <p className="text-center text-lg mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="200">
@@ -99,8 +92,8 @@ export const ContactSection = () => {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div data-aos="fade-left">
-              <div className="bg-card shadow-lg border rounded-2xl p-6 theme-border cyberpunk:rgb-bg-line">
-                <h4 className="text-xl font-bold mb-2 px-2 py-1 rounded inline-block light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation">Connect With Me</h4>
+              <div className="bg-card shadow-lg border border-border rounded-2xl p-6">
+                <h4 className="text-xl font-bold mb-2 px-2 py-1 rounded inline-block" style={{color: '#1e40af'}}>Connect With Me</h4>
                 <p className="text-muted-foreground mb-6">I'm always open to connecting with like-minded individuals, collaborators, or potential employers. Whether you have a project in mind, a question about my work, or simply want to say hello, don't hesitate to reach out. I genuinely enjoy discussing ideas, solving problems, exploring opportunities.</p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
@@ -149,8 +142,8 @@ export const ContactSection = () => {
 
             {/* Contact Form */}
             <div data-aos="fade-right">
-              <div className="bg-card shadow-lg border rounded-2xl p-6 theme-border cyberpunk:rgb-bg-line">
-                <h4 className="text-xl font-bold mb-6 px-2 py-1 rounded inline-block text-center light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation">Send Message</h4>
+              <div className="bg-card shadow-lg border border-border rounded-2xl p-6">
+                <h4 className="text-xl font-bold mb-6 px-2 py-1 rounded inline-block text-center" style={{color: '#1e40af'}}>Send Message</h4>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <input
@@ -232,11 +225,36 @@ export const ContactSection = () => {
       </div>
       
       {/* Success/Error Popups */}
-      {showPopup && (
-        <MessagePopup 
-          isSuccess={isSuccess}
-          onClose={() => setShowPopup(false)}
-        />
+      {state.succeeded && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-emerald-900/90 dark:via-green-900/90 dark:to-teal-900/90 border-2 border-emerald-400 dark:border-emerald-600 rounded-3xl p-8 text-center max-w-sm mx-4 shadow-2xl shadow-emerald-500/25 animate-scale-in backdrop-blur-lg">
+            <div className="text-emerald-600 dark:text-emerald-400 mx-auto mb-4 text-6xl animate-bounce">✅</div>
+            <h3 className="text-xl font-bold mb-2 text-emerald-700 dark:text-emerald-300">Message Sent Successfully</h3>
+            <p className="text-emerald-600/80 dark:text-emerald-400/80 mb-4">Thank you for reaching out. I'll get back to you soon.</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 font-medium"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      
+      {state.errors && Object.keys(state.errors).length > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-red-500/10 border-2 border-red-500 rounded-2xl p-8 text-center max-w-sm mx-4 shadow-2xl animate-scale-in">
+            <div className="text-red-500 mx-auto mb-4 text-6xl">❌</div>
+            <h3 className="text-xl font-bold mb-2 text-red-500">Message Failed to Send</h3>
+            <p className="text-muted-foreground">Please check your inputs and try again.</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
     </section>
   );

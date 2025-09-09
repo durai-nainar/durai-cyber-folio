@@ -48,7 +48,7 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="rgb-text-animation">Durai Rajan</span>
+              <span className="light:text-[#1E4BFF] dark:text-pink-400 special:text-white">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
               I'm a <span className="light:text-pink-500 dark:text-sky-500 special:text-white font-semibold min-h-[1.5em] inline-block">{displayText}</span>
@@ -93,9 +93,10 @@ export const HeroSection = () => {
             </div>
           </div>
 
+          {/* Right Content - Profile Image */}
           <div className="flex-1 flex justify-center" data-aos="fade-left">
             <div className="relative">
-              <div className="w-96 h-96 rounded-full rgb-border-animation overflow-hidden p-1 shadow-lg">
+              <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1 shadow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                   alt="Durai Rajan"
