@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Light theme - Clean white background like reference */
-    --background: 0 0% 100%;
+/* Light theme - Clean mint/cyan background like reference */
+    --background: 180 50% 92%;
     --foreground: 222.2 84% 4.9%;
     
     --card: 0 0% 100%;
@@ -346,9 +346,9 @@
   animation: tech-bounce 0.6s ease-in-out, tech-glow 1s ease-in-out infinite;
 }
 
-/* Light theme body background - Clean white like reference */
+/* Light theme body background - Clean mint/cyan like reference */
 .light {
-  background: #ffffff;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
   min-height: 100vh;
 }
 
@@ -401,4 +401,157 @@
 
 .light ::-webkit-scrollbar-thumb:hover {
   background: #333333;
+}
+
+/* RGB Text Animation */
+@keyframes rgb-text {
+  0% { color: #ff0000; }
+  16.66% { color: #ff8000; }
+  33.33% { color: #ffff00; }
+  50% { color: #00ff00; }
+  66.66% { color: #0080ff; }
+  83.33% { color: #8000ff; }
+  100% { color: #ff0000; }
+}
+
+.rgb-text-animation {
+  animation: rgb-text 3s ease-in-out infinite;
+}
+
+/* RGB Border Animation */
+@keyframes rgb-border {
+  0% { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+  16.66% { border-color: #ff8000; box-shadow: 0 0 20px #ff8000; }
+  33.33% { border-color: #ffff00; box-shadow: 0 0 20px #ffff00; }
+  50% { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; }
+  66.66% { border-color: #0080ff; box-shadow: 0 0 20px #0080ff; }
+  83.33% { border-color: #8000ff; box-shadow: 0 0 20px #8000ff; }
+  100% { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+}
+
+.rgb-border-animation {
+  border: 2px solid;
+  animation: rgb-border 3s ease-in-out infinite;
+}
+
+/* RGB Background Line Animation */
+@keyframes rgb-bg-line {
+  0% { background: linear-gradient(45deg, #ff0000 0%, transparent 50%); }
+  16.66% { background: linear-gradient(45deg, #ff8000 0%, transparent 50%); }
+  33.33% { background: linear-gradient(45deg, #ffff00 0%, transparent 50%); }
+  50% { background: linear-gradient(45deg, #00ff00 0%, transparent 50%); }
+  66.66% { background: linear-gradient(45deg, #0080ff 0%, transparent 50%); }
+  83.33% { background: linear-gradient(45deg, #8000ff 0%, transparent 50%); }
+  100% { background: linear-gradient(45deg, #ff0000 0%, transparent 50%); }
+}
+
+.rgb-bg-line {
+  position: relative;
+}
+
+.rgb-bg-line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, #ff0000 0%, transparent 50%);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  animation: rgb-bg-line 3s ease-in-out infinite;
+}
+
+/* Theme-specific borders */
+.light .theme-border {
+  border: 1px solid black !important;
+}
+
+.dark .theme-border {
+  border: 1px solid #B3CCE3 !important;
+}
+
+/* Theme-specific header and footer borders */
+.light .header-border {
+  border-bottom: 1px solid black !important;
+}
+
+.light .footer-border {
+  border-top: 1px solid black !important;
+}
+
+.dark .header-border {
+  border-bottom: 1px solid #B3CCE3 !important;
+}
+
+.dark .footer-border {
+  border-top: 1px solid #B3CCE3 !important;
+}
+
+/* Tech stack popup animation */
+@keyframes tech-popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.tech-popup {
+  animation: tech-popup 0.6s ease-out forwards;
+}
+
+/* Cyberpunk theme white shadow for tech items */
+.cyberpunk .tech-item {
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cyberpunk .tech-item:hover {
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Popup modal styles */
+.modal-popup {
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+@keyframes modal-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Success message styles */
+.success-popup {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe0f0 100%);
+  border: 2px solid #4ade80;
+  color: #16a34a;
+}
+
+.success-tick {
+  width: 60px;
+  height: 60px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  margin: 0 auto 16px;
+}
+
+/* Countdown timer styles */
+.countdown-timer {
+  font-size: 18px;
+  font-weight: bold;
+  color: #16a34a;
+  margin-top: 8px;
 }

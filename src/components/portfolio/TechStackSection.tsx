@@ -3,34 +3,26 @@ import { useTheme } from './ThemeProvider';
 
 export const TechStackSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { theme } = useTheme();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasLoaded(true);
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
+    // Auto popup on page load
+    const timer = setTimeout(() => {
+      setHasLoaded(true);
+    }, 500);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated]);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Reset animation when theme changes
   useEffect(() => {
     setHasLoaded(false);
-    setHasAnimated(false);
-    setAnimationKey(prev => prev + 1);
+    const timer = setTimeout(() => {
+      setHasLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [theme]);
 
   // Animations run only once on component mount, stay idle on scrolling
@@ -77,12 +69,12 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1E4BFF'}}>{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation">{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
-            key={`${animationKey}-${index}`}
-            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'animate-slide-in opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
+            key={index}
+            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer hover:border-primary transition-all duration-500 transform theme-border cyberpunk:border-none ${hasLoaded ? 'tech-popup opacity-100' : 'opacity-0'}`}
             style={{ 
               animationDelay: hasLoaded ? `${index * 150}ms` : '0ms',
               animationFillMode: 'both'
@@ -95,7 +87,7 @@ export const TechStackSection = () => {
                 className="w-full h-full object-contain drop-shadow-md"
               />
             </div>
-            <p className="text-sm font-semibold" style={{color: '#1E4BFF'}}>{tech.name}</p>
+            <p className="text-sm font-semibold light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation">{tech.name}</p>
           </div>
         ))}
       </div>
@@ -105,7 +97,7 @@ export const TechStackSection = () => {
   return (
     <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 light:rgb-text-animation dark:text-cyber-glow cyberpunk:rgb-text-animation" data-aos="fade-up">
           Tech Stack
         </h2>
         

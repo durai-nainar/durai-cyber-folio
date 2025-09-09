@@ -86,11 +86,11 @@ export const Header = () => {
   };
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 cyber-bg rgb-border ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'} ${theme === 'light' ? 'bg-cyan-400 text-blue-900' : ''}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 cyber-bg header-border ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'}`}>
         <nav className="container mx-auto px-6 py-4 ${theme === 'light' ? 'bg-cyan-400' : 'bg-gray-950'}">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className={`text-2xl font-bold ${theme === 'light' ? 'text-blue-900' : 'text-cyber-glow'}`}>
+            <div className="text-2xl font-bold rgb-text-animation">
               Durai's Portfolio
             </div>
 
