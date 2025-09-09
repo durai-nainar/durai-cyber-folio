@@ -48,10 +48,10 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="rgb-text">Durai Rajan</span>
+              <span className="light:text-[#1E4BFF] dark:text-pink-400 cyberpunk:rgb-text-animation">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
-              I'm a <span className="text-primary font-semibold min-h-[1.5em] inline-block">{displayText}</span>
+              I'm a <span className="light:text-pink-500 dark:text-sky-500 cyberpunk:rgb-text-animation font-semibold min-h-[1.5em] inline-block">{displayText}</span>
             </p>
             <p className="text-sm lg:text-base text-muted-foreground mb-8 max-w-md">
               I create <span className="text-primary">Exciting Stuff</span> on the Internet. Passionate about building innovative solutions and exploring cutting-edge technologies.
@@ -83,11 +83,11 @@ export const HeroSection = () => {
                 </svg>
               </button>
               <button 
-                onClick={() => window.open('https://instagram.com/durai__nainar', '_blank')}
+                onClick={() => window.open('https://leetcode.com/durai_rajan', '_blank')}
                 className="w-12 h-12 bg-card/50 hover:bg-primary/20 rounded-full flex items-center justify-center transition-all duration-300 border border-border"
               >
                 <svg className="w-5 h-5 text-foreground" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.818 2.133 7.95-.072 2.04-2.106 2.097-5.421.26-7.607l-4.043-4.892c-.122-.15-.23-.312-.335-.481l-.658-1.114c-.417-.68-1.355-1.887-2.728-1.887a1.5 1.5 0 0 0-1.5 1.5c0 .683.555 1.2 1.5 1.2.419 0 .604.119.604.119.604.453 1.146 1.179 1.604 1.793l.658 1.115c.122.198.26.379.421.533l4.043 4.891c.967 1.154.917 2.919-.137 4.031-.959.973-2.415 1.009-3.382.072l-.04-.039-4.276-4.193a2.824 2.824 0 0 1-.601-.85 2.657 2.657 0 0 1-.166-.485 2.474 2.474 0 0 1-.025-1.06 2.4 2.4 0 0 1 .554-.955l3.853-4.126a.5.5 0 0 1 .724.694l-3.854 4.126a1.405 1.405 0 0 0-.323.558 1.49 1.49 0 0 0 .015.638c.05.179.127.344.234.49a1.807 1.807 0 0 0 .384.542l4.277 4.193.039.038c.413.402 1.072.397 1.49-.013.42-.421.418-1.103-.004-1.518l-4.043-4.892a1.35 1.35 0 0 0-.21-.266 1.024 1.024 0 0 0-.658-.377c-.369-.055-.735.1-.92.377a.5.5 0 1 1-.806-.592c.353-.48.926-.77 1.526-.693a2.009 2.009 0 0 1 1.296.745c.088.104.17.215.245.331l4.043 4.892c1.025 1.221 1.001 3.041-.056 4.229-1.063 1.195-2.819 1.219-3.925.058l-.039-.038-4.277-4.193a2.824 2.824 0 0 1-.601-.85 2.657 2.657 0 0 1-.166-.485z"/>
                 </svg>
               </button>
             </div>
@@ -96,7 +96,7 @@ export const HeroSection = () => {
           {/* Right Content - Profile Image */}
           <div className="flex-1 flex justify-center" data-aos="fade-left">
             <div className="relative">
-              <div className="rgb-border w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1">
+              <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1 shadow-lg">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                   alt="Durai Rajan"
