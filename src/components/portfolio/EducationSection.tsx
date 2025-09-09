@@ -28,7 +28,7 @@ export const EducationSection = () => {
   return (
     <section id="education" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Education Timeline
         </h2>
         
@@ -42,7 +42,7 @@ export const EducationSection = () => {
                       <edu.icon className="text-primary-foreground" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-foreground bg-background dark:text-background dark:bg-foreground px-2 py-1 rounded inline-block">{edu.degree}</h3>
+                      <h3 className="text-xl font-bold px-2 py-1 rounded inline-block" style={{color: index === 0 ? '#ff8c00' : index === 1 ? '#0056b3' : '#228b22'}}>{edu.degree}</h3>
                       <p className="text-muted-foreground">{edu.year}</p>
                     </div>
                   </div>

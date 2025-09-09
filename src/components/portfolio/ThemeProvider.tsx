@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react"
 
-type Theme = "dark" | "light" | "system" | "creamy" | "ocean" | "sunset"
+type Theme = "dark" | "light" | "system" | "cyberpunk"
 
 type ThemeProviderProps = {
   children: React.ReactNode
@@ -22,7 +22,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = "system",
+  defaultTheme = "cyberpunk",
   storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
@@ -33,7 +33,7 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement
 
-    root.classList.remove("light", "dark", "creamy", "ocean", "sunset")
+    root.classList.remove("light", "dark", "cyberpunk")
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -53,6 +53,17 @@ export function ThemeProvider({
     setTheme: (theme: Theme) => {
       localStorage.setItem(storageKey, theme)
       setTheme(theme)
+      
+      // Trigger section animations on theme switch
+      setTimeout(() => {
+        const sections = document.querySelectorAll('[data-aos]')
+        sections.forEach(section => {
+          section.classList.remove('aos-animate')
+          setTimeout(() => {
+            section.classList.add('aos-animate')
+          }, 50)
+        })
+      }, 100)
     },
   }
 

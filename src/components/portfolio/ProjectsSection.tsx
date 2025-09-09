@@ -1,6 +1,8 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, X } from 'lucide-react';
+import { useState } from 'react';
 
 export const ProjectsSection = () => {
+  const [showModal, setShowModal] = useState(false);
   const projects = [
     {
       title: 'Thyroid Diagnosis using Machine Learning',
@@ -70,10 +72,23 @@ export const ProjectsSection = () => {
     }
   ];
 
+  const additionalProjects = [
+    { name: 'E-commerce Platform', link: 'https://example.com/project1' },
+    { name: 'Task Management App', link: 'https://example.com/project2' },
+    { name: 'Social Media Dashboard', link: 'https://example.com/project3' },
+    { name: 'Real-time Chat Application', link: 'https://example.com/project4' },
+    { name: 'Blog Management System', link: 'https://example.com/project5' },
+    { name: 'Inventory Management Tool', link: 'https://example.com/project6' },
+    { name: 'Portfolio Website Builder', link: 'https://example.com/project7' },
+    { name: 'Expense Tracker App', link: 'https://example.com/project8' },
+    { name: 'Recipe Sharing Platform', link: 'https://example.com/project9' },
+    { name: 'Learning Management System', link: 'https://example.com/project10' }
+  ];
+
   return (
     <section id="projects" className="py-20 bg-background relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
           Projects
         </h2>
         
@@ -127,8 +142,47 @@ export const ProjectsSection = () => {
               </div>
             ))}
           </div>
+          
+          <div className="text-center mt-12" data-aos="fade-up">
+            <button 
+              onClick={() => setShowModal(true)}
+              className="text-2xl font-bold cursor-pointer hover:scale-105 transition-transform bg-white text-black border border-border px-6 py-3 rounded-lg shadow-lg"
+            >
+              Click Here to view More Projects
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Modal for additional projects */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={() => setShowModal(false)}>
+          <div className="bg-card border border-border rounded-2xl p-8 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-foreground">Additional Projects</h3>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="grid gap-4">
+              {additionalProjects.map((project, index) => (
+                <div key={index} className="text-center">
+                  <button
+                    onClick={() => window.open(project.link, '_blank')}
+                    className="bg-secondary hover:bg-accent border border-border rounded-lg px-6 py-4 w-full text-foreground font-medium transition-all duration-300 hover:scale-105"
+                  >
+                    {project.name}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
