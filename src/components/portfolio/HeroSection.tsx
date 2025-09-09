@@ -48,7 +48,7 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="light:text-[#1E4BFF] dark:text-pink-400 special:text-white">Durai Rajan</span>
+              <span className="rgb-text-animation">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
               I'm a <span className="light:text-pink-500 dark:text-sky-500 special:text-white font-semibold min-h-[1.5em] inline-block">{displayText}</span>
@@ -96,7 +96,7 @@ export const HeroSection = () => {
           {/* Right Content - Profile Image */}
           <div className="flex-1 flex justify-center" data-aos="fade-left">
             <div className="relative">
-              <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1 shadow-lg">
+              <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-cyber-glow-pulse overflow-hidden p-1 shadow-lg rgb-border-animation">
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                   alt="Durai Rajan"
@@ -104,7 +104,7 @@ export const HeroSection = () => {
                 />
               </div>
               {/* Outer glow ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-cyber-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-cyber-pulse rgb-border-animation" style={{ animationDelay: '1s' }}></div>
             </div>
           </div>
         </div>
