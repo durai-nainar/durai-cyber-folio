@@ -10,7 +10,7 @@ export const AboutSection = () => {
     <section id="about" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 timeline-number" data-aos="fade-up">
+          <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
             About Me
           </h2>
           
