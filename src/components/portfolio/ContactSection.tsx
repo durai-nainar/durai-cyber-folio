@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import { useState } from 'react';
+import { Send, CheckCircle } from 'lucide-react';
 import { useForm, ValidationError } from '@formspree/react';
 
 export const ContactSection = () => {
-  const [state, handleSubmit] = useForm("xpwjonrb");
+  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_ID"); // Replace with your actual Formspree form ID
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,16 +11,13 @@ export const ContactSection = () => {
     message: ''
   });
 
-  // Reset form after successful submission
-  useEffect(() => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await handleSubmit(e);
     if (state.succeeded) {
-      console.log('✅ Message sent successfully!', state);
       setFormData({ name: '', email: '', subject: '', message: '' });
     }
-    if (state.errors && Object.keys(state.errors).length > 0) {
-      console.error('❌ Message failed to send:', state.errors);
-    }
-  }, [state.succeeded, state.errors]);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -28,7 +25,6 @@ export const ContactSection = () => {
       [e.target.name]: e.target.value
     }));
   };
-
 
   const socialLinks = [
     {
@@ -144,7 +140,7 @@ export const ContactSection = () => {
             <div data-aos="fade-right">
               <div className="bg-card shadow-lg border border-border rounded-2xl p-6">
                 <h4 className="text-xl font-bold mb-6 px-2 py-1 rounded inline-block text-center" style={{color: '#1e40af'}}>Send Message</h4>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={onSubmit} className="space-y-6">
                   <div>
                     <input
                       type="text"
@@ -153,7 +149,7 @@ export const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue focus:border-cyber-blue text-foreground transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
                     />
                     <ValidationError 
                       prefix="Name" 
@@ -169,7 +165,7 @@ export const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue focus:border-cyber-blue text-foreground transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
                     />
                     <ValidationError 
                       prefix="Email" 
@@ -185,7 +181,7 @@ export const ContactSection = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue focus:border-cyber-blue text-foreground transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground"
                     />
                     <ValidationError 
                       prefix="Subject" 
@@ -201,7 +197,7 @@ export const ContactSection = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyber-blue focus:border-cyber-blue text-foreground resize-none transition-all duration-300"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-foreground resize-none"
                     />
                     <ValidationError 
                       prefix="Message" 
@@ -209,11 +205,7 @@ export const ContactSection = () => {
                       errors={state.errors}
                     />
                   </div>
-                  <button 
-                    type="submit" 
-                    disabled={state.submitting || formData.name.length < 1 || formData.email.length < 1 || formData.subject.length < 5 || formData.message.length < 10} 
-                    className="w-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  >
+                  <button type="submit" disabled={state.submitting} className="w-full btn-cyber flex items-center justify-center gap-2 disabled:opacity-50">
                     <Send size={20} />
                     {state.submitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -224,35 +216,13 @@ export const ContactSection = () => {
         </div>
       </div>
       
-      {/* Success/Error Popups */}
+      {/* Success Popup */}
       {state.succeeded && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-green-500/10 border-2 border-green-500 rounded-2xl p-8 text-center max-w-sm mx-4 shadow-2xl animate-scale-in">
-            <div className="text-green-500 mx-auto mb-4 text-6xl">✅</div>
-            <h3 className="text-xl font-bold mb-2 text-green-500">Message Sent Successfully</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+          <div className="card-cyber text-center max-w-sm mx-4">
+            <CheckCircle className="text-green-500 mx-auto mb-4" size={48} />
+            <h3 className="text-xl font-bold mb-2 text-cyber-glow">Message Sent Successfully!</h3>
             <p className="text-muted-foreground">Thank you for reaching out. I'll get back to you soon.</p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-      
-      {state.errors && Object.keys(state.errors).length > 0 && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-red-500/10 border-2 border-red-500 rounded-2xl p-8 text-center max-w-sm mx-4 shadow-2xl animate-scale-in">
-            <div className="text-red-500 mx-auto mb-4 text-6xl">❌</div>
-            <h3 className="text-xl font-bold mb-2 text-red-500">Message Failed to Send</h3>
-            <p className="text-muted-foreground">Please check your inputs and try again.</p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-            >
-              Close
-            </button>
           </div>
         </div>
       )}

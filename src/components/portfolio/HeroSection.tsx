@@ -48,10 +48,10 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="light:text-[#1E4BFF] dark:text-pink-400 special:text-white">Durai Rajan</span>
+              <span className="text-foreground bg-background dark:text-purple-800 dark:bg-foreground px-4 py-2 rounded-lg">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
-              I'm a <span className="light:text-pink-500 dark:text-sky-500 special:text-white font-semibold min-h-[1.5em] inline-block">{displayText}</span>
+              I'm a <span className="text-primary font-semibold min-h-[1.5em] inline-block">{displayText}</span>
             </p>
             <p className="text-sm lg:text-base text-muted-foreground mb-8 max-w-md">
               I create <span className="text-primary">Exciting Stuff</span> on the Internet. Passionate about building innovative solutions and exploring cutting-edge technologies.

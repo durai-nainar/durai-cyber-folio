@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useTheme } from './ThemeProvider';
 
 export const TechStackSection = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,17 +11,32 @@ export const TechStackSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Reset animation when theme changes
+  // Reset animations when theme changes
   useEffect(() => {
-    setHasLoaded(false);
-    setAnimationKey(prev => prev + 1);
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, [theme]);
+    const handleThemeChange = () => {
+      setHasLoaded(false);
+      setAnimationKey(prev => prev + 1);
+      setTimeout(() => setHasLoaded(true), 100);
+    };
 
-  // Animations run only once on component mount, stay idle on scrolling
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const target = mutation.target as Element;
+          if (target === document.documentElement) {
+            handleThemeChange();
+          }
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
   const techStack = {
     frontend: [
       { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
@@ -67,7 +80,7 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1E4BFF'}}>{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center" style={{color: '#1e40af'}}>{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
@@ -85,7 +98,7 @@ export const TechStackSection = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <p className="text-xs font-medium" style={{color: '#1E4BFF'}}>{tech.name}</p>
+            <p className="text-xs font-medium" style={{color: '#1e40af'}}>{tech.name}</p>
           </div>
         ))}
       </div>
@@ -95,7 +108,7 @@ export const TechStackSection = () => {
   return (
     <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1E4BFF'}} data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12" style={{color: '#1e40af'}} data-aos="fade-up">
           Tech Stack
         </h2>
         
