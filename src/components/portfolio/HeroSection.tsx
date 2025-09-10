@@ -48,7 +48,7 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
             <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-              <span className="text-foreground bg-background dark:text-purple-800 dark:bg-foreground px-4 py-2 rounded-lg">Durai Rajan</span>
+              <span className="text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg">Durai Rajan</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-2">
               I'm a <span className="text-primary font-semibold min-h-[1.5em] inline-block">{displayText}</span>
