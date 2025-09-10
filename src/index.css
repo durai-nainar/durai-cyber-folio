@@ -6,31 +6,31 @@
 
 @layer base {
   :root {
-/* Light theme - Light blue/cyan gradient like reference */
-    --background: 194 80% 85%;
+    /* Light theme - Soft mint/cyan background like uploaded image */
+    --background: 180 20% 95%;
     --foreground: 222.2 84% 4.9%;
     
-    --card: 194 80% 90%;
+    --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
     --primary-glow: 222.2 47.4% 20%;
     
-    --secondary: 194 60% 75%;
+    --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
     
-    --accent: 194 60% 80%;
+    --accent: 210 40% 93%;
     --accent-foreground: 222.2 84% 4.9%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     
-    --muted: 194 40% 80%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
     
-    --border: 194 31.8% 75%;
-    --input: 194 31.8% 75%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     
     --cyber-gradient: linear-gradient(135deg, hsl(222.2 47.4% 11.2%), hsl(222.2 47.4% 20%));
@@ -79,7 +79,7 @@
   }
 
   .cyberpunk {
-    /* Cyberpunk theme - Dark blue futuristic */
+    /* Cyberpunk theme - Dark blue futuristic with RGB animations */
     --background: 220 100% 3%;
     --foreground: 180 100% 90%;
     
@@ -109,6 +109,14 @@
     --cyber-gradient: linear-gradient(135deg, hsl(180 100% 50%), hsl(280 100% 70%));
     --cyber-glow: 0 0 30px hsl(180 100% 50% / 0.5);
     --cyber-text-glow: 0 0 15px hsl(180 100% 50% / 0.8);
+    
+    /* RGB Animation Colors */
+    --rgb-red: 255, 0, 0;
+    --rgb-green: 0, 255, 0;
+    --rgb-blue: 0, 0, 255;
+    --rgb-cyan: 0, 255, 255;
+    --rgb-magenta: 255, 0, 255;
+    --rgb-yellow: 255, 255, 0;
   }
 
 }
@@ -286,6 +294,46 @@
   }
 }
 
+/* RGB Color Animation Keyframes for Cyberpunk Theme */
+@keyframes rgb-border {
+  0% { border-color: rgb(var(--rgb-red)); box-shadow: 0 0 10px rgb(var(--rgb-red)); }
+  16.66% { border-color: rgb(var(--rgb-yellow)); box-shadow: 0 0 10px rgb(var(--rgb-yellow)); }
+  33.33% { border-color: rgb(var(--rgb-green)); box-shadow: 0 0 10px rgb(var(--rgb-green)); }
+  50% { border-color: rgb(var(--rgb-cyan)); box-shadow: 0 0 10px rgb(var(--rgb-cyan)); }
+  66.66% { border-color: rgb(var(--rgb-blue)); box-shadow: 0 0 10px rgb(var(--rgb-blue)); }
+  83.33% { border-color: rgb(var(--rgb-magenta)); box-shadow: 0 0 10px rgb(var(--rgb-magenta)); }
+  100% { border-color: rgb(var(--rgb-red)); box-shadow: 0 0 10px rgb(var(--rgb-red)); }
+}
+
+@keyframes rgb-text {
+  0% { color: rgb(var(--rgb-red)); text-shadow: 0 0 10px rgb(var(--rgb-red)); }
+  16.66% { color: rgb(var(--rgb-yellow)); text-shadow: 0 0 10px rgb(var(--rgb-yellow)); }
+  33.33% { color: rgb(var(--rgb-green)); text-shadow: 0 0 10px rgb(var(--rgb-green)); }
+  50% { color: rgb(var(--rgb-cyan)); text-shadow: 0 0 10px rgb(var(--rgb-cyan)); }
+  66.66% { color: rgb(var(--rgb-blue)); text-shadow: 0 0 10px rgb(var(--rgb-blue)); }
+  83.33% { color: rgb(var(--rgb-magenta)); text-shadow: 0 0 10px rgb(var(--rgb-magenta)); }
+  100% { color: rgb(var(--rgb-red)); text-shadow: 0 0 10px rgb(var(--rgb-red)); }
+}
+
+@keyframes rgb-button {
+  0% { 
+    background: linear-gradient(135deg, rgb(var(--rgb-red)), rgb(var(--rgb-yellow)));
+    box-shadow: 0 0 20px rgb(var(--rgb-red) / 0.5);
+  }
+  33.33% { 
+    background: linear-gradient(135deg, rgb(var(--rgb-green)), rgb(var(--rgb-cyan)));
+    box-shadow: 0 0 20px rgb(var(--rgb-green) / 0.5);
+  }
+  66.66% { 
+    background: linear-gradient(135deg, rgb(var(--rgb-blue)), rgb(var(--rgb-magenta)));
+    box-shadow: 0 0 20px rgb(var(--rgb-blue) / 0.5);
+  }
+  100% { 
+    background: linear-gradient(135deg, rgb(var(--rgb-red)), rgb(var(--rgb-yellow)));
+    box-shadow: 0 0 20px rgb(var(--rgb-red) / 0.5);
+  }
+}
+
 /* Enhanced animations for theme switching */
 .animate-theme-switch {
   animation: theme-switch-pulse 0.5s ease-in-out;
@@ -346,9 +394,15 @@
   animation: tech-bounce 0.6s ease-in-out, tech-glow 1s ease-in-out infinite;
 }
 
-/* Light theme body background - Light cyan gradient like reference */
+/* Light theme body background - Gradient like uploaded image */
 .light {
-  background: linear-gradient(135deg, #a8e6cf 0%, #88d3ce 25%, #68b3d1 50%, #4a9fd1 75%, #2d8bd1 100%);
+  background: linear-gradient(135deg, 
+    #f3e8ff 0%,    /* Light purple */
+    #fae8ff 25%,   /* Light pink */
+    #e0f2fe 50%,   /* Light cyan */
+    #a7f3d0 75%,   /* Light mint */
+    #ecfccb 100%   /* Light lime */
+  );
   min-height: 100vh;
 }
 
@@ -395,122 +449,80 @@
 }
 
 /* Light theme scrollbar */
-/* RGB Animation Keyframes */
-@keyframes rgb-text {
-  0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-  16.66% { color: #ff8c00; text-shadow: 0 0 10px #ff8c00; }
-  33.33% { color: #ffd700; text-shadow: 0 0 10px #ffd700; }
-  50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-  66.66% { color: #00bfff; text-shadow: 0 0 10px #00bfff; }
-  83.33% { color: #8a2be2; text-shadow: 0 0 10px #8a2be2; }
-  100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-}
-
-@keyframes rgb-border {
-  0% { border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
-  16.66% { border-color: #ff8c00; box-shadow: 0 0 15px #ff8c00; }
-  33.33% { border-color: #ffd700; box-shadow: 0 0 15px #ffd700; }
-  50% { border-color: #00ff00; box-shadow: 0 0 15px #00ff00; }
-  66.66% { border-color: #00bfff; box-shadow: 0 0 15px #00bfff; }
-  83.33% { border-color: #8a2be2; box-shadow: 0 0 15px #8a2be2; }
-  100% { border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
-}
-
-/* RGB Animation Classes */
-.rgb-text-animation {
-  animation: rgb-text 3s linear infinite;
-}
-
-.rgb-border-animation {
-  border: 2px solid;
-  animation: rgb-border 3s linear infinite;
-}
-
-/* Tech Stack Auto Popup Animation */
-@keyframes tech-popup {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) translateY(50px);
-  }
-  70% {
-    transform: scale(1.1) translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.tech-popup {
-  animation: tech-popup 0.8s ease-out forwards;
-}
-
-/* Theme-specific text styling */
-.light .theme-heading-text {
-  color: #1e4bff;
-  text-shadow: 0 0 8px rgba(30, 75, 255, 0.4);
-}
-
-.dark .theme-heading-text {
-  color: #60a5fa;
-  text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
-}
-
-.cyberpunk .theme-heading-text {
-  animation: rgb-text 3s linear infinite;
-}
-
-/* Theme-specific borders */
-.light .theme-border {
-  border: 1px solid #000000 !important;
-}
-
-.dark .theme-border {
-  border: 1px solid #B3CCE3 !important;
-}
-
-.light .theme-border-header {
-  border-bottom: 1px solid #000000 !important;
-}
-
-.dark .theme-border-header {
-  border-bottom: 1px solid #B3CCE3 !important;
-}
-
-.light .theme-border-footer {
-  border-top: 1px solid #000000 !important;
-}
-
-.dark .theme-border-footer {
-  border-top: 1px solid #B3CCE3 !important;
-}
-
-/* Message popup styles */
-@keyframes popup-scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.popup-scale-in {
-  animation: popup-scale-in 0.3s ease-out;
-}
-
-/* Project modal styles */
-.project-modal-backdrop {
-  backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.7);
-}
-
 .light ::-webkit-scrollbar-thumb {
   background: #000000;
 }
 
 .light ::-webkit-scrollbar-thumb:hover {
   background: #333333;
+}
+
+/* Cyberpunk Theme RGB Animations */
+.cyberpunk .rgb-text-animation {
+  animation: rgb-text 3s linear infinite;
+}
+
+.cyberpunk .rgb-border-animation {
+  animation: rgb-border 3s linear infinite;
+}
+
+.cyberpunk .rgb-button-animation {
+  animation: rgb-button 3s linear infinite;
+}
+
+/* Apply RGB animations to specific elements in cyberpunk theme */
+.cyberpunk h1,
+.cyberpunk h2,
+.cyberpunk h3,
+.cyberpunk .portfolio-title,
+.cyberpunk .hero-name {
+  animation: rgb-text 3s linear infinite;
+}
+
+.cyberpunk .card-cyber,
+.cyberpunk .tech-card,
+.cyberpunk .btn-cyber {
+  animation: rgb-border 3s linear infinite;
+}
+
+.cyberpunk .btn-cyber {
+  animation: rgb-button 3s linear infinite;
+}
+
+/* Tech stack white shadow for special theme */
+.cyberpunk .tech-card {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cyberpunk .tech-card:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px);
+}
+
+/* Success message styling - white with light pink mix */
+.success-message {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(252, 231, 243, 0.95) 100%
+  );
+  border: 2px solid rgba(236, 72, 153, 0.3);
+}
+
+.success-message h3,
+.success-message p {
+  color: #4a5568 !important;
+}
+
+.success-emoji {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  margin: 0 auto;
 }

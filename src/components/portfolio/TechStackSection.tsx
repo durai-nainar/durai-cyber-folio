@@ -9,14 +9,22 @@ export const TechStackSection = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Auto-popup on component mount
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-      setHasAnimated(true);
-    }, 500);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasLoaded(true);
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
 
-    return () => clearTimeout(timer);
-  }, []);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   // Reset animation when theme changes
   useEffect(() => {
@@ -69,16 +77,12 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center theme-heading-text">{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center cyberpunk:rgb-text-animation" style={{color: '#1E4BFF'}}>{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
             key={`${animationKey}-${index}`}
-            className={`tech-item bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'tech-popup opacity-100' : 'opacity-0'} cyberpunk:shadow-white dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50 cyberpunk:shadow-lg cyberpunk:shadow-white/20`}
-            style={{ 
-              animationDelay: hasLoaded ? `${index * 100}ms` : '0ms',
-              animationFillMode: 'both'
-            }}
+            className={`tech-item tech-card bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer transition-all duration-500 hover:scale-110 hover:rotate-3 hover:shadow-2xl dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50`}
           >
             <div className="w-12 h-12 mx-auto mb-3 transition-transform duration-300">
               <img 
@@ -87,7 +91,7 @@ export const TechStackSection = () => {
                 className="w-full h-full object-contain drop-shadow-md"
               />
             </div>
-            <p className="text-sm font-semibold theme-heading-text">{tech.name}</p>
+            <p className="text-sm font-semibold" style={{color: '#1E4BFF'}}>{tech.name}</p>
           </div>
         ))}
       </div>
@@ -97,7 +101,7 @@ export const TechStackSection = () => {
   return (
     <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 theme-heading-text" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 cyberpunk:rgb-text-animation" style={{color: '#1E4BFF'}} data-aos="fade-up">
           Tech Stack
         </h2>
         
