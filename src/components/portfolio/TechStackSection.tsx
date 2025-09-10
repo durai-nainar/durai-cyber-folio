@@ -1,31 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import { useTheme } from './ThemeProvider';
-
 export const TechStackSection = () => {
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    // Auto-popup on component mount
-    const timer = setTimeout(() => {
-      setHasLoaded(true);
-      setHasAnimated(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Reset animation when theme changes
-  useEffect(() => {
-    setHasLoaded(false);
-    setHasAnimated(false);
-    setAnimationKey(prev => prev + 1);
-  }, [theme]);
-
-  // Animations run only once on component mount, stay idle on scrolling
   const techStack = {
     frontend: [
       { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
@@ -69,25 +42,23 @@ export const TechStackSection = () => {
 
   const TechGrid = ({ title, technologies }: { title: string; technologies: Array<{ name: string; logo: string }> }) => (
     <div className="mb-12">
-      <h3 className="text-2xl font-bold mb-6 text-center theme-heading-text">{title}</h3>
+      <h3 className="text-2xl font-bold mb-6 text-center rgb-text border-b-2 border-primary pb-2 inline-block">{title}</h3>
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {technologies.map((tech, index) => (
           <div 
-            key={`${animationKey}-${index}`}
-            className={`tech-item bg-card/80 backdrop-blur-sm shadow-lg border border-border/50 rounded-xl text-center p-4 group cursor-pointer hover:border-primary transition-all duration-500 transform ${hasLoaded ? 'tech-popup opacity-100' : 'opacity-0'} cyberpunk:shadow-white dark:bg-opacity-10 dark:border-blue-400/20 dark:hover:border-blue-400/50 cyberpunk:shadow-lg cyberpunk:shadow-white/20`}
-            style={{ 
-              animationDelay: hasLoaded ? `${index * 100}ms` : '0ms',
-              animationFillMode: 'both'
-            }}
+            key={index} 
+            className="bg-card/50 backdrop-blur-sm border border-border rounded-lg text-center p-3 group cursor-pointer hover:border-primary transition-all duration-300"
+            data-aos="zoom-in" 
+            data-aos-delay={index * 100}
           >
-            <div className="w-12 h-12 mx-auto mb-3 transition-transform duration-300">
+            <div className="w-10 h-10 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
               <img 
                 src={tech.logo} 
                 alt={tech.name}
-                className="w-full h-full object-contain drop-shadow-md"
+                className="w-full h-full object-contain"
               />
             </div>
-            <p className="text-sm font-semibold theme-heading-text">{tech.name}</p>
+            <p className="text-xs font-medium text-foreground">{tech.name}</p>
           </div>
         ))}
       </div>
@@ -95,9 +66,9 @@ export const TechStackSection = () => {
   );
 
   return (
-    <section ref={sectionRef} id="techstack" className="py-20 cyber-bg relative">
+    <section id="techstack" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 theme-heading-text" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 rgb-text" data-aos="fade-up">
           Tech Stack
         </h2>
         
