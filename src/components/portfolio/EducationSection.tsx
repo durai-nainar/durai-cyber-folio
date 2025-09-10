@@ -28,7 +28,7 @@ export const EducationSection = () => {
   return (
     <section id="education" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-12 text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block" data-aos="fade-up">
+        <h2 className="text-4xl font-bold text-center mb-12 text-foreground" data-aos="fade-up">
           Education Timeline
         </h2>
         

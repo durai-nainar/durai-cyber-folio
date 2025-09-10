@@ -58,7 +58,7 @@ export const ContactSection = () => {
     <section id="contact" className="py-20 cyber-bg relative">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-6 text-foreground bg-background dark:text-background dark:bg-foreground px-4 py-2 rounded-lg inline-block" data-aos="fade-up">
+          <h2 className="text-4xl font-bold text-center mb-6 text-foreground" data-aos="fade-up">
             Get In Touch
           </h2>
           <p className="text-center text-lg mb-12 text-muted-foreground" data-aos="fade-up" data-aos-delay="200">
